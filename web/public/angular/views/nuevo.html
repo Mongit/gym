@@ -1,0 +1,57 @@
+<div class="container" ng-controller="nuevoController as ctrl">
+    <div class="jumbotron">
+        <form>
+            <fieldset class="form-group">
+                <label for="nombre">Nombre: </label>
+                <input type="text" class="form-control" id="nombre" placeholder="Nombre del cliente">
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="tipoPago">Tipo de pago: </label>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="tipoPagoRadio" id="semanal" value="7" checked> Semanal
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="tipoPagoRadio" id="quincenal" value="14"> Quincenal
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="tipoPagoRadio" id="mensual" value="30"> Mensual
+                    </label>
+                </div>
+            </fieldset>
+            <div class="row">
+                <div class="col-md-6">
+                    <fieldset class="form-group">
+                        <label for="fechaInicio">Fecha de inicio: </label>
+                        <input type="text" class="form-control" name="fechaInicio" id="fechaInicio" />
+                    </fieldset>
+                </div>
+                <div class="col-md-6">
+                    <fieldset class="form-group">
+                        <label for="fechaFin">Fecha de vencimiento: </label>
+                        <input type="text" class="form-control" name="fechaFin" id="fechaFin" />
+                    </fieldset>
+                </div>
+            </div>
+            <br />
+            <label for="activo">Seleccione el estado del cliente </label>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="activo" value="true" checked> Activo
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="inactivo" value="false"> Inacvtivo
+                </label>
+            </div>
+
+            <a class="btn btn-primary" href="#/">Regresar</a>
+            <button type="submit" class="btn btn-success">Guardar</button>
+        </form>
+    </div>
+</div>
