@@ -1,4 +1,4 @@
-<div class="jumbotron">
+<div class="jumbotron" ><!-- ng-controller="TodosController as ctrl"-->
     <a type="button" class="btn btn-success" href="#/nuevo">
         <span class="glyphicon glyphicon-plus"></span> Nuevo
     </a>
@@ -25,6 +25,21 @@
                 <td>0 días</td>
                 <td><a>Borrar</a></td>
             </tr>
+            <!-- 
+
+
+ <tr>
+                        <th scope="row">{{ ctrl.contador + 1 }}</th>
+                        <td>{{cliente.nombre}}</td>
+                        <td>{{ctrl.color}}</td>
+                        <td>{{cliente.fechaFin}}</td>
+                        <td>{{ctrl.vencimientoDias}}</td>
+                        <td>{{ctrl.despuesVencimiento}}</td>
+                        <td>
+                            <a href="#" ng-click="ctrl.delete(cliente.nombre._id)">Borrar</a>
+                        </td>
+                    </tr>
+-->
         </tbody>
     </table>
 </div>
