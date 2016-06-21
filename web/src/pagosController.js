@@ -12,6 +12,8 @@ module.exports = (function() {
 */
     //    router.post('/', pagosApi.save.bind(pagosApi));
 
+        
+
         router.get('/:id', pagosApi.getOne.bind(pagosApi));
 
         router.delete('/:id', pagosApi.delete.bind(pagosApi));

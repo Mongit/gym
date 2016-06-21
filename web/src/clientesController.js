@@ -11,6 +11,8 @@ module.exports = (function() {
         router.post('/', clientesApi.save.bind(clientesApi));
 
         router.get('/:id', clientesApi.getOne.bind(clientesApi));
+        
+        router.put('/:id', clientesApi.agregarPago.bind(clientesApi));
 
         router.delete('/:id', clientesApi.delete.bind(clientesApi));
     }

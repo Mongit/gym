@@ -1,10 +1,11 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-var Pago = require("./pagoCollection");
-var schema = mongoose.Schema({
-    nombre: String,
-    activo: Boolean,
-    _pagos: [Pago]
+var pagoSchema = require("./pagoSchema.js");
+
+var clienteSchema = mongoose.Schema({
+  nombre: String,
+  activo: Boolean,
+  ultimosPagos: [pagoSchema]
 });
 
-module.exports = mongoose.model('Cliente', schema);
+module.exports = mongoose.model('Cliente', clienteSchema);

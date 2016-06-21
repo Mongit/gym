@@ -2,7 +2,7 @@ var intravenous = require("intravenous");
 
 //local modules
 var Cliente = require("./clienteCollection");
-var Pago = require("./pagoCollection");
+var Pago = require("./pagoSchema");
 
 var models = {
     cliente: Cliente,
