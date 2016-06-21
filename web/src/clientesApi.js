@@ -21,7 +21,7 @@ var ClientesApi = (function() {
     ClientesApi.prototype.save = function(req, res, next){
         var that = this;
         var cliente = that.clienteFactory.get();
-
+        console.log("SERVER SAVE METHOD");
         cliente.nombre = req.body.nombre;
         cliente.activo = req.body.activo;
         cliente.ultimosPagos.push({
@@ -30,7 +30,8 @@ var ClientesApi = (function() {
           fechaFin:req.body.fechaFin,
           fechaCreacion: new Date.now()
         });
-       cliente.save(function (err, cliente) {
+        console.log(cliente.activo);
+        cliente.save(function (err, cliente) {
           if (err) return next(err)
           console.log('Success!');
           res.json(cliente);

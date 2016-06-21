@@ -4,6 +4,7 @@ module.exports = (function() {
         this.clientesApi = clientesApi;
         this.router = this.express.Router();
 
+        console.log("SERVER CONTROLLER");
         var router = this.router;
 
         router.get('/', clientesApi.getAll.bind(clientesApi));
