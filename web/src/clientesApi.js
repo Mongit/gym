@@ -6,17 +6,16 @@ var ClientesApi = (function() {
         this.err = err;
     };
 
-//curl http://localhost:3000/clientes/api/
+    //curl http://localhost:3000/clientes/api/
     ClientesApi.prototype.getAll = function(req, res, next) {
         var that = this;
-        that.models.cliente.find().populate('pagos')
+        that.models.cliente.find()
        .exec(function (err, clientes) {
            if (err) return next(err);
            console.log(clientes);
            return res.json(clientes);
          });
     };
-
 //curl -i -H "Content-Type: application/json" -d '{ "nombre": "jonas", "tipoPago": "semanal", "activo": true, "fechaInicio":"2016,05,25", "fechaFin":"2016,06,25", "fechaCreacion":"2016,05,20" }' http://localhost:3000/clientes/api/
     ClientesApi.prototype.save = function(req, res, next){
         var that = this;
