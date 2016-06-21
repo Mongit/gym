@@ -18,7 +18,7 @@
         <tbody ng-repeat="cliente in ctrl.clientes">
             <tr>
                 <th scope="row">{{$index + 1}}</th>
-                <td>{{cliente.nombre}}</td>
+                <td><a href="#/editar/{{cliente._id}}">{{cliente.nombre}}</a></td>
                 <td>{{ctrl.color}}</td>
                 <td ng-repeat="pago in cliente.ultimosPagos">{{pago.fechaFin}}</td>
                 <td>{{ctrl.vencimientoDias}}</td>
