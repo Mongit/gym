@@ -19,6 +19,14 @@
             }).success(success).error(that.error);
         };
 
+        Proxy.prototype.getOne = function(id, success) {
+         var that = this;
+         $http({
+             method: "GET",
+             url: that.url + id
+         }).success(success).error(that.error);
+        };
+
         Proxy.prototype.save = function(model, success) {
             var that = this;
             $http({
