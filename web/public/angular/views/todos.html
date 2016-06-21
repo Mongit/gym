@@ -21,13 +21,13 @@
                 <td><a href="#/editar/{{cliente._id}}">{{cliente.nombre}}</a></td>
                 <td>{{ctrl.color}}</td>
                 <td>{{cliente.fechaDeVencimiento}}</td>
-                <td>{{ctrl.vencimientoDias}}</td>
+                <td>{{ctrl.getDiasParaVencimiento(cliente.fechaDeVencimiento)}}</td>
                 <td>{{ctrl.despuesVencimiento}}</td>
                 <td>
                     <a href="#" ng-click="ctrl.delete(cliente._id)">Borrar</a>
                 </td>
             </tr>
-            
+
         </tbody>
     </table>
 </div>

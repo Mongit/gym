@@ -2,7 +2,13 @@
     var app = angular.module('app');
     app.controller('TodosController', ['$location', 'proxy', function($location, proxy) {
         var ctrl = this;
-        
+        ctrl.getDiasParaVencimiento = function(vencimiento){
+          var today = Date.now();
+          var venc = Date.parse( vencimiento );
+          var result = venc - today;
+          var days = (result / (1000*60*60*24));
+          return days;
+        };
         ctrl.getAll = function(){
             proxy.getAll(function(data){
                 ctrl.clientes=data;
@@ -13,12 +19,12 @@
             });
         };
         ctrl.getAll();
-       
+
         ctrl.delete = function (id) {
             proxy.delete(id,function(){
                $location.path('/');
             });
         };
-       
+
     }]);
 })();
