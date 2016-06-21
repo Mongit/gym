@@ -11,6 +11,7 @@
     "debug": "~2.2.0",
     "ejs": "~2.3.3",
     "express": "~4.13.1",
+    "jquery": "^3.0.0",
     "intravenous": "^0.1.4-beta",
     "mongoose": "^4.5.1",
     "morgan": "~1.6.1",
