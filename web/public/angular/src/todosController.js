@@ -9,6 +9,16 @@
           var days = (result / (1000*60*60*24));
           return days;
         };
+        ctrl.getDateInHumanReadable = function(vencimiento){
+          var date = new Date(vencimiento);
+          var curr_date = date.getDate();
+          var curr_month = date.getMonth() + 1; //Months are zero based
+          var curr_year = date.getFullYear();
+          var str = curr_date + "-" + curr_month + "-" + curr_year;
+          return str;
+        };
+
+
         ctrl.getAll = function(){
             proxy.getAll(function(data){
                 ctrl.clientes=data;
