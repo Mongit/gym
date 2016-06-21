@@ -7,13 +7,10 @@
 
         //Server Call
         ctrl.save = function() {
-            console.dir(ctrl);
-            console.log(ctrl.fechaInicio);
-            /*proxy.save(ctrl, ctrl, function(data, status, headers, config){
+            proxy.save(ctrl, function(data, status, headers, config){
                 alert("Cliente guardado exitosamente. Gracias.");
                 $location.path('/');
             });
-            */
         };
         
         //Datepicker
