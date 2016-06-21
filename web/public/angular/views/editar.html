@@ -1,5 +1,6 @@
 <div class="container" ng-controller="EditarController as ctrl">
     <div class="jumbotron">
+        <h1>Agregar Pago</h1>
         <form name="frmNuevo">
             <fieldset class="form-group">
                 <label for="nombre">Nombre: </label>
@@ -38,20 +39,9 @@
                 </div>
             </div>
             <br />
-            <label for="activo">Seleccione el estado del cliente </label>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="optionsRadios" id="activo" value="true" checked  ng-model="ctrl.activo"> Activo
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="optionsRadios" id="inactivo" value="false" ng-model="ctrl.activo"> Inactivo
-                </label>
-            </div>
 
             <a class="btn btn-primary" href="#/">Regresar</a>
-            <button type="submit" ng-click="ctrl.save()" class="btn btn-success">Guardar</button>
+            <button type="submit" ng-click="ctrl.editar()" class="btn btn-success">Guardar pago</button>
         </form>
     </div>
 </div>

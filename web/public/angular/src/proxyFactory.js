@@ -1,8 +1,8 @@
 (function() {
     var app = angular.module('app');
-    
+
     app.factory('proxyFactory', ['$http', '$log', function($http, $log) {
-        
+
         var Proxy = function(url) {
             this.url = url;
         };
@@ -18,7 +18,7 @@
                 url: that.url
             }).success(success).error(that.error);
         };
-        
+
         Proxy.prototype.save = function(model, success) {
             var that = this;
             $http({
@@ -27,15 +27,24 @@
                 data: model
             }).success(success).error(that.error);
         };
-        
+
+        Proxy.prototype.update = function(id, model, success) {
+           var that = this;
+           $http({
+               method: 'PUT',
+               url: that.url + id,
+               data: model
+           }).success(success).error(that.error);
+         };
+
         Proxy.prototype.delete = function(id, success) {
             var that = this;
             $http({
                 method: "DELETE",
                 url: that.url + id
-            }).success(success).error(that.error);       
+            }).success(success).error(that.error);
         };
-        
+
         return function(url) {
             return new Proxy(url);
         };
