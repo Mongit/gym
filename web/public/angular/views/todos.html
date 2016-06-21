@@ -11,7 +11,6 @@
                 <th>Estatus</th>
                 <th>Fecha de vencimiento</th>
                 <th>Vencimiento en días</th>
-                <th>Días después de vencimiento</th>
                 <th></th>
             </tr>
         </thead>
@@ -19,10 +18,9 @@
             <tr>
                 <th scope="row">{{$index + 1}}</th>
                 <td><a href="#/editar/{{cliente._id}}">{{cliente.nombre}}</a></td>
-                <td>{{ctrl.color}}</td>
+                <td ng-class='{red : ctrl.getDiasParaVencimiento(cliente.fechaDeVencimiento)}'>{{ctrl.color}}</td>
                 <td>{{cliente.fechaDeVencimiento}}</td>
                 <td>{{ctrl.getDiasParaVencimiento(cliente.fechaDeVencimiento)}}</td>
-                <td>{{ctrl.despuesVencimiento}}</td>
                 <td>
                     <a href="#" ng-click="ctrl.delete(cliente._id)">Borrar</a>
                 </td>

@@ -6,7 +6,7 @@
           var today = Date.now();
           var venc = Date.parse( vencimiento );
           var result = venc - today;
-          var days = (result / (1000*60*60*24));
+          var days = parseInt(result / (1000*60*60*24));
           return days;
         };
         ctrl.getAll = function(){
