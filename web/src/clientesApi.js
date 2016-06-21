@@ -28,7 +28,7 @@ var ClientesApi = (function() {
           tipoPago:req.body.tipoPago,
           fechaInicio:req.body.fechaInicio,
           fechaFin:req.body.fechaFin,
-          fechaCreacion: new Date.now();
+          fechaCreacion: new Date.now()
         });
        cliente.save(function (err, cliente) {
           if (err) return next(err)
@@ -59,7 +59,7 @@ var ClientesApi = (function() {
                 tipoPago:req.body.tipoPago,
                 fechaInicio:req.body.fechaInicio,
                 fechaFin:req.body.fechaFin,
-                fechaCreacion: new Date.now();
+                fechaCreacion: new Date.now()
               });
               cliente.save(function (err, cliente) {
                  if (err) return next(err)
