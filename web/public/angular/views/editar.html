@@ -1,0 +1,57 @@
+<div class="container" ng-controller="EditarController as ctrl">
+    <div class="jumbotron">
+        <form name="frmNuevo">
+            <fieldset class="form-group">
+                <label for="nombre">Nombre: </label>
+                <input type="text" class="form-control" id="nombre" placeholder="Nombre del cliente" ng-model="ctrl.nombre">
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="tipoPago">Tipo de pago: </label>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="tipoPagoRadio" id="semanal" value="semanal" checked ng-model="ctrl.tipoPago"> Semanal
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="tipoPagoRadio" id="quincenal" value="quincenal" ng-model="ctrl.tipoPago"> Quincenal
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="tipoPagoRadio" id="mensual" value="mensual" ng-model="ctrl.tipoPago"> Mensual
+                    </label>
+                </div>
+            </fieldset>
+            <div class="row">
+                <div class="col-md-6">
+                    <fieldset class="form-group">
+                        <label for="fechaInicio">Fecha de inicio: </label>
+                        <input type="text" class="form-control" name="fechaInicio" id="fechaInicio"  ng-model="ctrl.fechaInicio" placeholder="Seleccione fecha de inicio"/>
+                    </fieldset>
+                </div>
+                <div class="col-md-6">
+                    <fieldset class="form-group">
+                        <label for="fechaFin">Fecha de vencimiento: </label>
+                        <input type="text" class="form-control" name="fechaFin" id="fechaFin"  ng-model="ctrl.fechaFin" placeholder="Seleccione la fecha de vencimiento"/>
+                    </fieldset>
+                </div>
+            </div>
+            <br />
+            <label for="activo">Seleccione el estado del cliente </label>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="activo" value="true" checked  ng-model="ctrl.activo"> Activo
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="inactivo" value="false" ng-model="ctrl.activo"> Inactivo
+                </label>
+            </div>
+
+            <a class="btn btn-primary" href="#/">Regresar</a>
+            <button type="submit" ng-click="ctrl.save()" class="btn btn-success">Guardar</button>
+        </form>
+    </div>
+</div>
