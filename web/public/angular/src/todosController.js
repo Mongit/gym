@@ -12,7 +12,7 @@
         //ctrl.getAll();
        
         ctrl.delete = function (id) {
-            console.log("Se elimino cliente " + id);
+            console.log("delete");
             /*
             proxy.delete(id,function(){
                $location.path('/');
