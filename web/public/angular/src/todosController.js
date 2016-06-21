@@ -6,6 +6,10 @@
         ctrl.getAll = function(){
             proxy.getAll(function(data){
                 ctrl.clientes=data;
+                for(var i = 0; i < data.length; i++ ) {
+                    var index = data[i].ultimosPagos.length - 1;
+                    ctrl.clientes[i].fechaDeVencimiento = data[i].ultimosPagos[index].fechaFin;
+                }
             });
         };
         ctrl.getAll();
