@@ -21,7 +21,7 @@ var ClientesApi = (function() {
     ClientesApi.prototype.save = function(req, res, next){
         var that = this;
         var cliente = that.clienteFactory.get();
-        
+
         cliente.nombre = req.body.nombre;
         cliente.activo = req.body.activo;
         cliente.ultimosPagos.push({
@@ -54,7 +54,6 @@ var ClientesApi = (function() {
               //uses body to update user.
               console.log(cliente);
               cliente.nombre = req.body.nombre;
-              cliente.activo = req.body.activo;
               cliente.ultimosPagos.push({
                 tipoPago:req.body.tipoPago,
                 fechaInicio:req.body.fechaInicio,
