@@ -16,11 +16,12 @@
             </tr>
         </thead>
         <tbody ng-repeat="cliente in ctrl.clientes">
-            <tr>
+            <tr ng-repeat="pago in ctrl.fechaDeVencimiento">
                 <th scope="row">{{$index + 1}}</th>
                 <td><a href="#/editar/{{cliente._id}}">{{cliente.nombre}}</a></td>
                 <td>{{ctrl.color}}</td>
-                <td ng-repeat="pago in cliente.ultimosPagos">{{pago.fechaFin}}</td>
+                <!--td ng-repeat="pago in cliente.ultimosPagos">{{pago.fechaFin}}</td-->
+                <td>{{pago}}</td>{{pago}}
                 <td>{{ctrl.vencimientoDias}}</td>
                 <td>{{ctrl.despuesVencimiento}}</td>
                 <td>
