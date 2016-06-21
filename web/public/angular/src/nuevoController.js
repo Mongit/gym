@@ -7,7 +7,6 @@
 
         //Server Call
         ctrl.save = function() {
-            console.log("SAVE");
             proxy.save(ctrl, function(data, status, headers, config){
                 alert("Cliente guardado exitosamente. Gracias.");
                 $location.path('/');

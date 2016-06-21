@@ -21,7 +21,6 @@
         
         Proxy.prototype.save = function(model, success) {
             var that = this;
-            console.log("PROXY SAVE");
             $http({
                 method: 'POST',
                 url: that.url,
