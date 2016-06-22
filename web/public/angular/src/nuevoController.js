@@ -15,7 +15,7 @@
         };
         ctrl.getDateInHumanReadable = function(millisec){
           var date = new Date(millisec);
-          var curr_date = date.getDate();
+          var curr_date = date.getDate() + 1;
           var curr_month = date.getMonth() + 1; //Months are zero based
           var curr_year = date.getFullYear();
           if(curr_date<10){
@@ -27,24 +27,26 @@
           var str = curr_year + "-" + curr_month + "-" + curr_date;
           return str;
         };
+        ctrl.fechaInicio = Date.now();
         ctrl.getFechaFin = function() {
           var week = 1000 * 60 * 60 * 24 * 7;
           var twoWeeks = 1000 * 60 * 60 * 24 * 14;
           var oneMonth = 1000 * 60 * 60 * 24 * 30;
           if(ctrl.tipoPago === "semanal"){
-            ctrl.fechaInicio = Date.now();
-            var result = ctrl.fechaInicio + week;
+            //ctrl.fechaInicio = Date.now();
+            var date = Date.parse(ctrl.fechaInicio);
+            var result = date + week;
             ctrl.fechaFin = ctrl.getDateInHumanReadable(result);
             ctrl.fechaInicio = ctrl.getDateInHumanReadable(ctrl.fechaInicio);
           };
           if(ctrl.tipoPago === "quincenal"){
-            ctrl.fechaInicio = Date.now();
+            //ctrl.fechaInicio = Date.now();
             var result = ctrl.fechaInicio + twoWeeks;
             ctrl.fechaFin = ctrl.getDateInHumanReadable(result);
             ctrl.fechaInicio = ctrl.getDateInHumanReadable(ctrl.fechaInicio);
           };
           if(ctrl.tipoPago === "mensual"){
-            ctrl.fechaInicio = Date.now();
+            //ctrl.fechaInicio = Date.now();
             var result = ctrl.fechaInicio + oneMonth;
             ctrl.fechaFin = ctrl.getDateInHumanReadable(result);
             ctrl.fechaInicio = ctrl.getDateInHumanReadable(ctrl.fechaInicio);
@@ -67,6 +69,7 @@
             });
             $( "#fechaInicio" ).change(function(){
                 ctrl.fechaInicio = $(this).val();
+                ctrl.getFechaFin();
             });
             $( "#fechaFin" ).datepicker({
               showWeek: true,
