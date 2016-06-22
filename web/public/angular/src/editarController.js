@@ -21,8 +21,8 @@
         };
         getOne(ctrl.clienteId);
 
-        ctrl.getDateInHumanReadable = function(vencimiento){
-          var date = new Date(vencimiento);
+        ctrl.getDateInHumanReadable = function(millisec){
+          var date = new Date(millisec);
           var curr_date = date.getDate();
           var curr_month = date.getMonth() + 1; //Months are zero based
           var curr_year = date.getFullYear();
@@ -41,15 +41,15 @@
           var twoWeeks = 1000 * 60 * 60 * 24 * 14;
           var oneMonth = 1000 * 60 * 60 * 24 * 29;
           if(ctrl.tipoPago === "semanal"){
-            var result = ctrl.fechaInicio + week;
+            var result = Date.parse(ctrl.fechaInicio) + week;
             ctrl.fechaFin = ctrl.getDateInHumanReadable(result);
           };
           if(ctrl.tipoPago === "quincenal"){
-            var result = ctrl.fechaInicio + twoWeeks;
+            var result = Date.parse(ctrl.fechaInicio) + twoWeeks;
             ctrl.fechaFin = ctrl.getDateInHumanReadable(result);
           };
           if(ctrl.tipoPago === "mensual"){
-            var result = ctrl.fechaInicio + oneMonth;
+            var result = Date.parse(ctrl.fechaInicio) + oneMonth;
             ctrl.fechaFin = ctrl.getDateInHumanReadable(result);
           }else{
             return;

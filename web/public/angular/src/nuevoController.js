@@ -13,8 +13,8 @@
                 $location.path('/');
             });
         };
-        ctrl.getDateInHumanReadable = function(vencimiento){
-          var date = new Date(vencimiento);
+        ctrl.getDateInHumanReadable = function(millisec){
+          var date = new Date(millisec);
           var curr_date = date.getDate();
           var curr_month = date.getMonth() + 1; //Months are zero based
           var curr_year = date.getFullYear();
