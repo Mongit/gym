@@ -18,7 +18,15 @@
           return str;
         };
 
-
+        ctrl.getColor = function(fvencimiento){
+            if(fvencimiento < 0)
+                return "#C9302C";
+            else if(fvencimiento > 0 && fvencimiento < 5)
+                return "#EC971F";
+            else if(fvencimiento > 5)
+                return "#449D44";
+        };
+        
         ctrl.getAll = function(){
             proxy.getAll(function(data){
                 ctrl.clientes=data;
