@@ -10,3 +10,8 @@ a {
 .errorMessages {
     color: red;
 }
+
+#tituloTable,
+#vencimientoTodos {
+    text-align: center;
+}

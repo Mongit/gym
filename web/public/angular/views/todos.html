@@ -4,11 +4,11 @@
     <table class="table table-sm">
         <thead>
             <tr>
-                <th>#</th>
+                <th id="tituloTable">#</th>
                 <th>Nombre</th>
-                <th>Estatus</th>
-                <th>Fecha de vencimiento</th>
-                <th>Vencimiento en días</th>
+                <th id="tituloTable">Estatus</th>
+                <th id="tituloTable">Fecha de vencimiento</th>
+                <th id="tituloTable">Vencimiento en días</th>
                 <th></th>
             </tr>
         </thead>
@@ -17,8 +17,8 @@
                 <th scope="row">{{$index + 1}}</th>
                 <td><a href="#/editar/{{cliente._id}}">{{cliente.nombre}}</a></td>
                 <td style="background: {{ctrl.getColor(ctrl.getDiasParaVencimiento(cliente.fechaDeVencimiento))}} "> </td>
-                <td>{{ctrl.getDateInHumanReadable(cliente.fechaDeVencimiento)}}</td>
-                <td>{{ctrl.getDiasParaVencimiento(cliente.fechaDeVencimiento)}}</td>
+                <td id="vencimientoTodos">{{ctrl.getDateInHumanReadable(cliente.fechaDeVencimiento)}}</td>
+                <td id="vencimientoTodos">{{ctrl.getDiasParaVencimiento(cliente.fechaDeVencimiento)}}</td>
                 <td>
                     <a href="#" ng-click="ctrl.delete(cliente._id)">Borrar</a>
                 </td>
