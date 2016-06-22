@@ -41,6 +41,7 @@
           var twoWeeks = 1000 * 60 * 60 * 24 * 14;
           var oneMonth = 1000 * 60 * 60 * 24 * 29;
           if(ctrl.tipoPago === "semanal"){
+              console.log(ctrl.fechaInicio);
             var result = ctrl.fechaInicio + week;
             ctrl.fechaFin = ctrl.getDateInHumanReadable(result);
           };
