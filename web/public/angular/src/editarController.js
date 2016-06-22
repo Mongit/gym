@@ -15,14 +15,14 @@
                 ctrl.nombre = data.nombre;
                 var index = data.ultimosPagos.length - 1;
                 var ultimoPago = data.ultimosPagos[index];
-                ctrl.fechaInicio = ultimoPago.fechaFin;//nuevo pago inicia en la fecha de vencimiento anterior.
+                ctrl.fechaInicio = ctrl.getDateInHumanReadable(ultimoPago.fechaFin);//nuevo pago inicia en la fecha de vencimiento anterior.
                 ctrl.tipoPago = ultimoPago.tipoPago;
             });
         };
         getOne(ctrl.clienteId);
 
-        ctrl.getDateInHumanReadable = function(millisec){
-          var date = new Date(millisec);
+        ctrl.getDateInHumanReadable = function(millisecOrString){
+          var date = new Date(millisecOrString);
           var curr_date = date.getDate();
           var curr_month = date.getMonth() + 1; //Months are zero based
           var curr_year = date.getFullYear();
