@@ -1,8 +1,6 @@
 <div class="jumbotron" ng-controller="TodosController as ctrl">
-    <a type="button" class="btn btn-success" href="#/nuevo">
-        <span class="glyphicon glyphicon-plus"></span> Nuevo
-    </a>
-
+  <h1>Clientes del gym</h1>
+  <p>Click sobre el nombre del cliente para agregar un pago.</p>
     <table class="table table-sm">
         <thead>
             <tr>
@@ -18,8 +16,8 @@
             <tr>
                 <th scope="row">{{$index + 1}}</th>
                 <td><a href="#/editar/{{cliente._id}}">{{cliente.nombre}}</a></td>
-                <td ng-class='{red : ctrl.getDiasParaVencimiento(cliente.fechaDeVencimiento)}'>{{ctrl.color}}</td>
-                <td>{{cliente.fechaDeVencimiento}}</td>
+                <td style="color: red;">{{ctrl.color}}{{ctrl.getDiasParaVencimiento(cliente.fechaDeVencimiento) < 0 ? "DEUDA" : ""}}</td>
+                <td>{{ctrl.getDateInHumanReadable(cliente.fechaDeVencimiento)}}</td>
                 <td>{{ctrl.getDiasParaVencimiento(cliente.fechaDeVencimiento)}}</td>
                 <td>
                     <a href="#" ng-click="ctrl.delete(cliente._id)">Borrar</a>
@@ -28,4 +26,7 @@
 
         </tbody>
     </table>
+    <a type="button" class="btn btn-success" href="#/nuevo">
+        <span class="glyphicon glyphicon-plus"></span> Agregar cliente nuevo
+    </a>
 </div>
