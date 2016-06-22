@@ -5,6 +5,7 @@
 
         var ctrl = this;
 
+
         //Server Call
         ctrl.save = function() {
             proxy.save(ctrl, function(data, status, headers, config){
@@ -12,7 +13,45 @@
                 $location.path('/');
             });
         };
-        
+        ctrl.getDateInHumanReadable = function(vencimiento){
+          var date = new Date(vencimiento);
+          var curr_date = date.getDate();
+          var curr_month = date.getMonth() + 1; //Months are zero based
+          var curr_year = date.getFullYear();
+          var str = curr_year + "-" + curr_month + "-" + curr_date;
+          return str;
+        };
+        ctrl.getFechaFin = function() {
+          var week = 1000 * 60 * 60 * 24 * 6;
+          var twoWeeks = 1000 * 60 * 60 * 24 * 14;
+          var oneMonth = 1000 * 60 * 60 * 24 * 29;
+          if(ctrl.tipoPago === "semanal"){
+            ctrl.fechaInicio = Date.now();
+            ctrl.fechaFin = Date.now();
+            var result = ctrl.fechaInicio + week;
+            ctrl.fechaFin = ctrl.getDateInHumanReadable(result);
+          };
+          if(ctrl.tipoPago === "quincenal"){
+            ctrl.fechaInicio = Date.now();
+            ctrl.fechaFin = Date.now();
+            var result = ctrl.fechaInicio + twoWeeks;
+            ctrl.fechaFin = result;
+          };
+          if(ctrl.tipoPago === "mensual"){
+            ctrl.fechaInicio = Date.now();
+            ctrl.fechaFin = Date.now();
+            var result = ctrl.fechaInicio + oneMonth;
+            ctrl.fechaFin = result;
+          }else{
+            return;
+          }
+          return;
+        };
+      /*
+        var endDate = new Date(date || Date.now());
+        var days = 6;
+        endDate.setDate(endDate.getDate() + days);
+        */
         //Datepicker
         $(function() {
             $( "#fechaInicio" ).datepicker({
@@ -29,10 +68,11 @@
               dateFormat: "yy-mm-dd"//dateFormat: "mm-dd-yy"
             });
             $( "#fechaFin" ).change(function(){
+
                 ctrl.fechaFin = $(this).val();
             });
           });
-        
+
     }]);
 
 })();

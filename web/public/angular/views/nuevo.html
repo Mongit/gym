@@ -1,29 +1,46 @@
 <div class="container" ng-controller="nuevoController as ctrl">
+    <h1>Nuevo registro</h1>
     <div class="jumbotron">
         <h1>Nuevo Usuario</h1>
         <form name="frmNuevo" ng-submit="frmNuevo.$valid && ctrl.save()" role="form" novalidate>
             <fieldset class="form-group">
                 <label for="nombre">Nombre: </label>
+<<<<<<< HEAD
                 <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre del cliente" ng-model="ctrl.nombre" required>
                 <div class="errorMessages" ng-messages="frmNuevo.nombre.$error" ng-if="!frmNuevo.nombre.$pristine || frmNuevo.$submitted" role="alert" >
                     <div ng-messages-include="./../error/errorMessages.html"></div>
                 </div>
+=======
+                <input type="text" class="form-control" id="nombre" placeholder="Nombre del cliente" ng-model="ctrl.nombre" required>
+>>>>>>> 7b3a0b2f58d757113c83f408ee97a9b44aa05967
             </fieldset>
             <fieldset class="form-group">
                 <label for="tipoPago">Tipo de pago: </label>
                 <div class="radio">
                     <label>
+<<<<<<< HEAD
                         <input type="radio" name="tipoPagoRadio" id="semanal" value="semanal" ng-model="ctrl.tipoPago" ng-required="!ctrl.tipoPago"> Semanal
+=======
+                        <input type="radio" ng-change="{{ctrl.getFechaFin()}}" name="tipoPagoRadio" id="semanal" value="semanal" ng-model="ctrl.tipoPago"> Semanal
+>>>>>>> 7b3a0b2f58d757113c83f408ee97a9b44aa05967
                     </label>
                 </div>
                 <div class="radio">
                     <label>
+<<<<<<< HEAD
                         <input type="radio" name="tipoPagoRadio" id="quincenal" value="quincenal" ng-model="ctrl.tipoPago" ng-required="!ctrl.tipoPago"> Quincenal
+=======
+                        <input type="radio" ng-change="{{ctrl.getFechaFin()}}" name="tipoPagoRadio" id="quincenal" value="quincenal" ng-model="ctrl.tipoPago"> Quincenal
+>>>>>>> 7b3a0b2f58d757113c83f408ee97a9b44aa05967
                     </label>
                 </div>
                 <div class="radio">
                     <label>
+<<<<<<< HEAD
                         <input type="radio" name="tipoPagoRadio" id="mensual" value="mensual" ng-model="ctrl.tipoPago" ng-required="!ctrl.tipoPago"> Mensual
+=======
+                        <input type="radio" ng-change="{{ctrl.getFechaFin()}}" name="tipoPagoRadio" id="mensual" value="mensual" ng-model="ctrl.tipoPago"> Mensual
+>>>>>>> 7b3a0b2f58d757113c83f408ee97a9b44aa05967
                     </label>
                 </div>
                 <div class="errorMessages" ng-messages="frmNuevo.tipoPagoRadio.$error" ng-if="!frmNuevo.tipoPagoRadio.$pristine || frmNuevo.$submitted" role="alert" >
