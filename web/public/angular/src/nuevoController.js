@@ -18,6 +18,12 @@
           var curr_date = date.getDate();
           var curr_month = date.getMonth() + 1; //Months are zero based
           var curr_year = date.getFullYear();
+          if(curr_date<10){
+            curr_date = "0" + curr_date;
+          }
+          if(curr_month<10){
+            curr_month = "0" + curr_month;
+          }
           var str = curr_year + "-" + curr_month + "-" + curr_date;
           return str;
         };
