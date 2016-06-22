@@ -11,7 +11,7 @@
         };
         ctrl.getDateInHumanReadable = function(vencimiento){
           var date = new Date(vencimiento);
-          var curr_date = date.getDate();
+          var curr_date = date.getDate() + 1;
           var curr_month = date.getMonth() + 1; //Months are zero based
           var curr_year = date.getFullYear();
           var str = curr_date + "-" + curr_month + "-" + curr_year;
