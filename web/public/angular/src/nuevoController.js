@@ -33,22 +33,21 @@
           var oneMonth = 1000 * 60 * 60 * 24 * 29;
           if(ctrl.tipoPago === "semanal"){
             ctrl.fechaInicio = Date.now();
-            //ctrl.fechaFin = Date.now();
             var result = ctrl.fechaInicio + week;
             ctrl.fechaFin = ctrl.getDateInHumanReadable(result);
             ctrl.fechaInicio = ctrl.getDateInHumanReadable(ctrl.fechaInicio);
           };
           if(ctrl.tipoPago === "quincenal"){
             ctrl.fechaInicio = Date.now();
-            ctrl.fechaFin = Date.now();
             var result = ctrl.fechaInicio + twoWeeks;
-            ctrl.fechaFin = result;
+            ctrl.fechaFin = ctrl.getDateInHumanReadable(result);
+            ctrl.fechaInicio = ctrl.getDateInHumanReadable(ctrl.fechaInicio);
           };
           if(ctrl.tipoPago === "mensual"){
             ctrl.fechaInicio = Date.now();
-            ctrl.fechaFin = Date.now();
             var result = ctrl.fechaInicio + oneMonth;
-            ctrl.fechaFin = result;
+            ctrl.fechaFin = ctrl.getDateInHumanReadable(result);
+            ctrl.fechaInicio = ctrl.getDateInHumanReadable(ctrl.fechaInicio);
           }else{
             return;
           }
