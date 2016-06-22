@@ -23,7 +23,7 @@
 
         ctrl.getDateInHumanReadable = function(millisecOrString){
           var date = new Date(millisecOrString);
-          var curr_date = date.getDate();
+          var curr_date = date.getDate() + 1;//el string viene 000, entronces lo interptreta como un día anterior.
           var curr_month = date.getMonth() + 1; //Months are zero based
           var curr_year = date.getFullYear();
           if(curr_date<10){
@@ -37,9 +37,9 @@
         };
 
         ctrl.getFechaFin = function() {
-          var week = 1000 * 60 * 60 * 24 * 6;
+          var week = 1000 * 60 * 60 * 24 * 7;
           var twoWeeks = 1000 * 60 * 60 * 24 * 14;
-          var oneMonth = 1000 * 60 * 60 * 24 * 29;
+          var oneMonth = 1000 * 60 * 60 * 24 * 30;
           if(ctrl.tipoPago === "semanal"){
             var result = Date.parse(ctrl.fechaInicio) + week;
             ctrl.fechaFin = ctrl.getDateInHumanReadable(result);

@@ -21,12 +21,12 @@
         ctrl.getColor = function(fvencimiento){
             if(fvencimiento < 0)
                 return "#C9302C";
-            else if(fvencimiento > 5)
+            else if(fvencimiento > 3)
                 return "#449D44";
-            else if(fvencimiento >= 0 && fvencimiento < 5)
+            else if(fvencimiento >= 0 && fvencimiento < 4)
                 return "#EC971F";
         };
-        
+
         ctrl.getAll = function(){
             proxy.getAll(function(data){
                 ctrl.clientes=data;

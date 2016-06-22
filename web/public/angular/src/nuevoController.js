@@ -28,9 +28,9 @@
           return str;
         };
         ctrl.getFechaFin = function() {
-          var week = 1000 * 60 * 60 * 24 * 6;
+          var week = 1000 * 60 * 60 * 24 * 7;
           var twoWeeks = 1000 * 60 * 60 * 24 * 14;
-          var oneMonth = 1000 * 60 * 60 * 24 * 29;
+          var oneMonth = 1000 * 60 * 60 * 24 * 30;
           if(ctrl.tipoPago === "semanal"){
             ctrl.fechaInicio = Date.now();
             var result = ctrl.fechaInicio + week;
