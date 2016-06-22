@@ -9,7 +9,6 @@
                 <th>Estatus</th>
                 <th>Fecha de vencimiento</th>
                 <th>Vencimiento en días</th>
-                <th>Días después de vencimiento</th>
                 <th></th>
             </tr>
         </thead>
@@ -20,7 +19,6 @@
                 <td style="color: red;">{{ctrl.color}}{{ctrl.getDiasParaVencimiento(cliente.fechaDeVencimiento) < 0 ? "DEUDA" : ""}}</td>
                 <td>{{ctrl.getDateInHumanReadable(cliente.fechaDeVencimiento)}}</td>
                 <td>{{ctrl.getDiasParaVencimiento(cliente.fechaDeVencimiento)}}</td>
-                <td>{{ctrl.despuesVencimiento}}</td>
                 <td>
                     <a href="#" ng-click="ctrl.delete(cliente._id)">Borrar</a>
                 </td>
