@@ -1,5 +1,5 @@
 (function () {
-    var app = angular.module('app', ['ngRoute']);
+    var app = angular.module('app', ['ngRoute', 'ngMessages']);
     
     app.config(["$routeProvider", function ($router) {
         $router.when("/", { templateUrl: "angular/views/todos.html" })

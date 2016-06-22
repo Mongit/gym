@@ -1,46 +1,60 @@
 <div class="container" ng-controller="nuevoController as ctrl">
     <h1>Nuevo registro</h1>
     <div class="jumbotron">
-        <form name="frmNuevo">
+        <h1>Nuevo Usuario</h1>
+        <form name="frmNuevo" ng-submit="frmNuevo.$valid && ctrl.save()" role="form" novalidate>
             <fieldset class="form-group">
                 <label for="nombre">Nombre: </label>
-                <input type="text" class="form-control" id="nombre" placeholder="Nombre del cliente" ng-model="ctrl.nombre" required>
+                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre del cliente" ng-model="ctrl.nombre" required>
+                <div class="errorMessages" ng-messages="frmNuevo.nombre.$error" ng-if="!frmNuevo.nombre.$pristine || frmNuevo.$submitted" role="alert" >
+                    <div ng-messages-include="./../error/errorMessages.html"></div>
+                </div>
             </fieldset>
             <fieldset class="form-group">
                 <label for="tipoPago">Tipo de pago: </label>
                 <div class="radio">
                     <label>
-                        <input type="radio" ng-change="{{ctrl.getFechaFin()}}" name="tipoPagoRadio" id="semanal" value="semanal" ng-model="ctrl.tipoPago"> Semanal
+
+                        <input type="radio" ng-change="{{ctrl.getFechaFin()}}" name="tipoPagoRadio" id="semanal" value="semanal" ng-model="ctrl.tipoPago" ng-required="!ctrl.tipoPago"> Semanal
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" ng-change="{{ctrl.getFechaFin()}}" name="tipoPagoRadio" id="quincenal" value="quincenal" ng-model="ctrl.tipoPago"> Quincenal
+                        <input type="radio" ng-change="{{ctrl.getFechaFin()}}" name="tipoPagoRadio" id="quincenal" value="quincenal" ng-model="ctrl.tipoPago" ng-required="!ctrl.tipoPago"> Quincenal
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" ng-change="{{ctrl.getFechaFin()}}" name="tipoPagoRadio" id="mensual" value="mensual" ng-model="ctrl.tipoPago"> Mensual
+                        <input type="radio" ng-change="{{ctrl.getFechaFin()}}" name="tipoPagoRadio" id="mensual" value="mensual" ng-model="ctrl.tipoPago" ng-required="!ctrl.tipoPago"> Mensual
                     </label>
+                </div>
+                <div class="errorMessages" ng-messages="frmNuevo.tipoPagoRadio.$error" ng-if="!frmNuevo.tipoPagoRadio.$pristine || frmNuevo.$submitted" role="alert" >
+                    <div ng-messages-include="./../../../error/errorMessages.html"></div>
                 </div>
             </fieldset>
             <div class="row">
                 <div class="col-md-6">
                     <fieldset class="form-group">
                         <label for="fechaInicio">Fecha de inicio: </label>
-                        <input type="text" class="form-control" name="fechaInicio" id="fechaInicio"  ng-model="ctrl.fechaInicio" placeholder="Seleccione fecha de inicio"/>
+                        <input type="text" class="form-control" name="fechaInicio" id="fechaInicio"  ng-model="ctrl.fechaInicio" placeholder="Seleccione fecha de inicio" required/>
+                        <div class="errorMessages" ng-messages="frmNuevo.fechaInicio.$error" ng-if="!frmNuevo.fechaInicio.$pristine || frmNuevo.$submitted" role="alert" >
+                            <div ng-messages-include="./../../../error/errorMessages.html"></div>
+                        </div>
                     </fieldset>
                 </div>
                 <div class="col-md-6">
                     <fieldset class="form-group">
                         <label for="fechaFin">Fecha de vencimiento: </label>
-                        <input type="text" class="form-control" name="fechaFin" id="fechaFin"  ng-model="ctrl.fechaFin" placeholder="Seleccione la fecha de vencimiento"/>
+                        <input type="text" class="form-control" name="fechaFin" id="fechaFin"  ng-model="ctrl.fechaFin" placeholder="Seleccione la fecha de vencimiento" required/>
+                        <div class="errorMessages" ng-messages="frmNuevo.fechaFin.$error" ng-if="!frmNuevo.fechaFin.$pristine || frmNuevo.$submitted" role="alert" >
+                            <div ng-messages-include="./../../../error/errorMessages.html"></div>
+                        </div>
                     </fieldset>
                 </div>
             </div>
             <br />
             <a class="btn btn-primary" href="#/">Regresar</a>
-            <button type="submit" ng-click="ctrl.save()" class="btn btn-success">Guardar</button>
+            <button type="submit" class="btn btn-success">Guardar</button>
         </form>
     </div>
 </div>
