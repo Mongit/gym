@@ -18,6 +18,12 @@
           var curr_date = date.getDate();
           var curr_month = date.getMonth() + 1; //Months are zero based
           var curr_year = date.getFullYear();
+          if(curr_date<10){
+            curr_date = "0" + curr_date;
+          }
+          if(curr_month<10){
+            curr_month = "0" + curr_month;
+          }
           var str = curr_year + "-" + curr_month + "-" + curr_date;
           return str;
         };
@@ -27,9 +33,10 @@
           var oneMonth = 1000 * 60 * 60 * 24 * 29;
           if(ctrl.tipoPago === "semanal"){
             ctrl.fechaInicio = Date.now();
-            ctrl.fechaFin = Date.now();
+            //ctrl.fechaFin = Date.now();
             var result = ctrl.fechaInicio + week;
             ctrl.fechaFin = ctrl.getDateInHumanReadable(result);
+            ctrl.fechaInicio = ctrl.getDateInHumanReadable(ctrl.fechaInicio);
           };
           if(ctrl.tipoPago === "quincenal"){
             ctrl.fechaInicio = Date.now();
