@@ -1,4 +1,5 @@
 <div class="container" ng-controller="nuevoController as ctrl">
+    <h1>Nuevo registro</h1>
     <div class="jumbotron">
         <form name="frmNuevo">
             <fieldset class="form-group">
@@ -9,17 +10,17 @@
                 <label for="tipoPago">Tipo de pago: </label>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="tipoPagoRadio" id="semanal" value="semanal" checked ng-model="ctrl.tipoPago"> Semanal
+                        <input type="radio" ng-change="{{ctrl.getFechaFin()}}" name="tipoPagoRadio" id="semanal" value="semanal" ng-model="ctrl.tipoPago"> Semanal
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="tipoPagoRadio" id="quincenal" value="quincenal" ng-model="ctrl.tipoPago"> Quincenal
+                        <input type="radio" ng-change="{{ctrl.getFechaFin()}}" name="tipoPagoRadio" id="quincenal" value="quincenal" ng-model="ctrl.tipoPago"> Quincenal
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="tipoPagoRadio" id="mensual" value="mensual" ng-model="ctrl.tipoPago"> Mensual
+                        <input type="radio" ng-change="{{ctrl.getFechaFin()}}" name="tipoPagoRadio" id="mensual" value="mensual" ng-model="ctrl.tipoPago"> Mensual
                     </label>
                 </div>
             </fieldset>
