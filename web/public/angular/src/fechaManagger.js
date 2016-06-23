@@ -5,9 +5,21 @@
 
         var FechaManagger = function() {
         };
+        FechaManagger.prototype.aumentarUnDia = function(str){
+          var fechaEnMillisec = Date.parse(str);//convierte a millisec.
+          var dia = 1000 * 60 * 60 * 24 * 1;
+          var result = fechaEnMillisec + dia;
+          return result;
+        };
+        FechaManagger.prototype.aumentarUnDosDias = function(str){
+          var fechaEnMillisec = Date.parse(str);//convierte a millisec.
+          var dia = 1000 * 60 * 60 * 24 * 2;
+          var result = fechaEnMillisec + dia;
+          return result;
+        };
 
-        FechaManagger.prototype.getDateStringForDisplayInInput = function(millisec){
-          var date = new Date(millisec);
+        FechaManagger.prototype.getDateStringForDisplayInInput = function(millisecOrString){
+          var date = new Date(millisecOrString);
           var curr_date = date.getDate();
           var curr_month = date.getMonth() + 1; //Months are zero based
           var curr_year = date.getFullYear();
@@ -31,7 +43,7 @@
 
           if(tipoPago === "semanal"){
             fechaFin = fechaInicioEnMillisec + week;
-            return fechaFin;
+            return fechaFin;//retorna milllisec
           };
 
           if(tipoPago === "quincenal"){

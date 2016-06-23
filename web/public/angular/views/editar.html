@@ -33,7 +33,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <fieldset class="form-group">
-                        <label for="fechaInicio">Fecha de inicio: </label>
+                        <label for="fechaInicio">Fecha de vencimiento anterior: </label>
                         <input type="text" class="form-control" name="fechaInicio" id="fechaInicio"  ng-model="ctrl.fechaInicio" placeholder="Seleccione fecha de inicio" required/>
                         <div class="errorMessages" ng-messages="frmNuevo.fechaInicio.$error" ng-if="!frmNuevo.fechaInicio.$pristine || frmNuevo.$submitted" role="alert" >
                             <div ng-messages-include="./../../../error/errorMessages.html"></div>
@@ -42,7 +42,7 @@
                 </div>
                 <div class="col-md-6">
                     <fieldset class="form-group">
-                        <label for="fechaFin">Fecha de vencimiento: </label>
+                        <label for="fechaFin">Nueva fecha de vencimiento: </label>
                         <input type="text" class="form-control" name="fechaFin" id="fechaFin"  ng-model="ctrl.fechaFin" placeholder="Seleccione la fecha de vencimiento" required/>
                         <div class="errorMessages" ng-messages="frmNuevo.fechaFin.$error" ng-if="!frmNuevo.fechaFin.$pristine || frmNuevo.$submitted" role="alert" >
                             <div ng-messages-include="./../../../error/errorMessages.html"></div>

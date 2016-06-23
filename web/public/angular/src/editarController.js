@@ -1,13 +1,12 @@
 (function() {
     var app = angular.module('app');
-    var depArr = ['$routeParams', '$location', 'proxy' ];
-    depArr.push(function($route, $location, proxy ) {
+    var depArr = ['$routeParams', '$location', 'proxy', 'fechaManagger' ];
+    depArr.push(function($route, $location, proxy, fechaManagger ) {
         var ctrl = this;
         ctrl.nombre = "";
         ctrl.tipoPago = "";
         ctrl.fechaInicio = "";
-        ctrl.fechaFin = "";
-
+        var fm = fechaManagger();
         ctrl.clienteId= $route.id;
 
         var getOne = function(id) {
@@ -15,48 +14,16 @@
                 ctrl.nombre = data.nombre;
                 var index = data.ultimosPagos.length - 1;
                 var ultimoPago = data.ultimosPagos[index];
-                ctrl.fechaInicio = ctrl.getDateInHumanReadable(ultimoPago.fechaFin);//nuevo pago inicia en la fecha de vencimiento anterior.
+                var millisec = fm.aumentarUnDosDias(ultimoPago.fechaFin);//el 00 del string resta un dia.
+                ctrl.fechaInicio = fm.getDateStringForDisplayInInput(millisec);//nuevo pago inicia en la fecha de vencimiento anterior.
                 ctrl.tipoPago = ultimoPago.tipoPago;
+                var fechaFinMillisec = fm.getFechaFin(ctrl.fechaInicio, ctrl.tipoPago);
+                ctrl.fechaFin = fm.getDateStringForDisplayInInput(fechaFinMillisec);
+
             });
         };
         getOne(ctrl.clienteId);
 
-        ctrl.getDateInHumanReadable = function(millisecOrString){
-          var date = new Date(millisecOrString);
-          var curr_date = date.getDate() + 1;//el string viene 000, entronces lo interptreta como un día anterior.
-          var curr_month = date.getMonth() + 1; //Months are zero based
-          var curr_year = date.getFullYear();
-          if(curr_date<10){
-            curr_date = "0" + curr_date;
-          }
-          if(curr_month<10){
-            curr_month = "0" + curr_month;
-          }
-          var str = curr_year + "-" + curr_month + "-" + curr_date;
-          return str;
-        };
-
-        ctrl.getFechaFin = function() {
-          var week = 1000 * 60 * 60 * 24 * 7;
-          var twoWeeks = 1000 * 60 * 60 * 24 * 14;
-          var oneMonth = 1000 * 60 * 60 * 24 * 30;
-          if(ctrl.tipoPago === "semanal"){
-            var result = Date.parse(ctrl.fechaInicio) + week;
-            ctrl.fechaFin = ctrl.getDateInHumanReadable(result);
-          };
-          if(ctrl.tipoPago === "quincenal"){
-            var result = Date.parse(ctrl.fechaInicio) + twoWeeks;
-            ctrl.fechaFin = ctrl.getDateInHumanReadable(result);
-          };
-          if(ctrl.tipoPago === "mensual"){
-            var result = Date.parse(ctrl.fechaInicio) + oneMonth;
-            ctrl.fechaFin = ctrl.getDateInHumanReadable(result);
-          }else{
-            return;
-          }
-          return;
-        };
-        ctrl.getFechaFin();
 
         ctrl.editar = function(){
             proxy.update(ctrl.clienteId, ctrl, function(data, status, headers, config){
