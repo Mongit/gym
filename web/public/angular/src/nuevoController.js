@@ -5,21 +5,29 @@
         var ctrl = this;
         var fm = fechaManagger();
         ctrl.tipoPago;
-        ctrl.fechaInicio = Date.now(); //millisec.
-        ctrl.fechaInicio = fm.getDateStringForDisplayInInput(Date.now());//string for display.
-        ctrl.fechaFin;
+        //en millisec
+        ctrl.sugerenciaInicio = Date.now(); //millisec.
+        ctrl.sugerenciaFin;
+
         var inicioModificada;
         var finModificada;
 
-        ctrl.getFechaFinBasadoEntipoPagoYfechaInicio = function(){
-          var fechaFin = fm.getFechaFin(ctrl.fechaInicio, ctrl.tipoPago);//fechaInicio es string. fechaFin retornara milisec.
-          ctrl.fechaFin = fm.getDateStringForDisplayInInput(fechaFin);
+        ctrl.getStringDateForDisplayFromMilliSec = function(dateMill){
+            var str = fm.getDateStringForDisplayInInput(dateMill);
+            return str;
         };
-        
+
+
+        ctrl.getFechaFinBasadoEntipoPagoYfechaInicio = function(){
+          var that = this;
+          var sugerenciaInicioSting = that.getStringDateForDisplayFromMilliSec(ctrl.sugerenciaInicio);
+          ctrl.sugerenciaFin = fm.getFechaFin(sugerenciaInicioSting, ctrl.tipoPago);//fechaInicio es string. sugerenciafin retornara milisec.
+        };
+
         //Server Call
         ctrl.save = function() {
-            ctrl.fechaInicio = inicioModificada || ctrl.fechaInicio;
-            ctrl.fechaFin = finModificada || ctrl.fechaFin;
+            ctrl.fechaInicio = inicioModificada || ctrl.getStringDateForDisplayFromMilliSec(ctrl.sugerenciaInicio);
+            ctrl.fechaFin = finModificada || ctrl.getStringDateForDisplayFromMilliSec(ctrl.sugerenciaFin);
             proxy.save(ctrl, function(data, status, headers, config){
                 $location.path('/');
             });
@@ -30,7 +38,7 @@
             $( "#fechaInicio" ).datepicker({
               showWeek: true,
               firstDay: 1,
-              dateFormat: "yy-mm-dd"//dateFormat: "mm-dd-yy"
+              dateFormat: "yy-mm-dd"
             });
             $( "#fechaInicio" ).change(function(){
                 inicioModificada = $(this).val();//facha inicio es un string  "2016-06-16"
@@ -38,7 +46,7 @@
             $( "#fechaFin" ).datepicker({
               showWeek: true,
               firstDay: 1,
-              dateFormat: "yy-mm-dd"//dateFormat: "mm-dd-yy"
+              dateFormat: "yy-mm-dd"
             });
             $( "#fechaFin" ).change(function(){
                 finModificada = $(this).val();

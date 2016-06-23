@@ -35,7 +35,15 @@
                 <div class="col-md-6">
                     <fieldset class="form-group">
                         <label for="fechaInicio">Fecha de inicio: </label>
-                        <input type="text" class="form-control" name="fechaInicio" id="fechaInicio"  ng-model="ctrl.fechaInicio" placeholder="Seleccione fecha de inicio" required/>
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="fechaInicio"
+                          id="fechaInicio"
+                          value="{{ctrl.getStringDateForDisplayFromMilliSec(ctrl.sugerenciaInicio)}}"
+                          placeholder="Seleccione fecha de inicio"
+                          required
+                        />
                         <div class="errorMessages" ng-messages="frmNuevo.fechaInicio.$error" ng-if="!frmNuevo.fechaInicio.$pristine || frmNuevo.$submitted" role="alert" >
                             <div ng-messages-include="./../../../error/errorMessages.html"></div>
                         </div>
@@ -44,7 +52,15 @@
                 <div class="col-md-6">
                     <fieldset class="form-group">
                         <label for="fechaFin">Fecha de vencimiento: {{ctrl.fechaFin}}</label>
-                        <input type="text" class="form-control" name="fechaFin" id="fechaFin"  ng-model="ctrl.fechaFin" placeholder="Seleccione la fecha de vencimiento" required/>
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="fechaFin"
+                          id="fechaFin"
+                          value="{{ctrl.getStringDateForDisplayFromMilliSec(ctrl.sugerenciaFin)}}"
+                          placeholder="Seleccione la fecha de vencimiento"
+                          required
+                        />
                         <div class="errorMessages" ng-messages="frmNuevo.fechaFin.$error" ng-if="!frmNuevo.fechaFin.$pristine || frmNuevo.$submitted" role="alert" >
                             <div ng-messages-include="./../../../error/errorMessages.html"></div>
                         </div>
