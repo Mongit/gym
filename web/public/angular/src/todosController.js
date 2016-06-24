@@ -2,7 +2,7 @@
     var app = angular.module('app');
     app.controller('TodosController', ['$location', 'proxy', function($location, proxy) {
         var ctrl = this;
-        ctrl.getDiasParaVencimiento = function(vencimiento){
+            ctrl.getDiasParaVencimiento = function(vencimiento){
           var today = Date.now();
           var venc = Date.parse( vencimiento );
           var result = venc - today;
