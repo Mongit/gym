@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var container = require('./src/container');
 var db = container.get('dbConnection');
-db.connect('mongodb://localhost/clientes');
+db.connect(process.env.CONNECTION_STRING || 'mongodb://localhost/clientes');
 
 var clientes = container.get("clientesController");
 var pagos = container.get("pagosController");
