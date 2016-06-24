@@ -19,7 +19,7 @@
             <tr>
                 <th scope="row">{{$index + 1}}</th>
                 <td>{{cliente.nombre}}</td>
-                <td><a href="#/editar/{{cliente._id}}">pagar</a></td>
+                <td id="vencimientoTodos"><a href="#/editar/{{cliente._id}}">pagar</a></td>
                 <td style="background: {{ctrl.getColor(ctrl.getDiasParaVencimiento(cliente.fechaDeVencimiento))}} "> </td>
                 <td id="vencimientoTodos">{{ctrl.getDateInHumanReadable(cliente.fechaDeVencimiento)}}</td>
                 <td id="vencimientoTodos">{{ctrl.getDiasParaVencimiento(cliente.fechaDeVencimiento)}}</td>
