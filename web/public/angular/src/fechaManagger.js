@@ -42,8 +42,6 @@
           var fechaInicioEnMillisec = Date.parse(fechaInicio);//convierte a millisec.
 
           if(tipoPago === "semanal"){
-              console.log("fechaFin");
-              console.log(fechaInicioEnMillisec);
             fechaFin = fechaInicioEnMillisec + week;
             return fechaFin;//retorna milllisec
           };

@@ -11,7 +11,7 @@
         };
         ctrl.getDateInHumanReadable = function(vencimiento){
           var date = new Date(vencimiento);
-          var curr_date = date.getDate() + 1;
+          var curr_date = date.getDate();
           var curr_month = date.getMonth() + 1; //Months are zero based
           var curr_year = date.getFullYear();
           if(curr_date<10){
@@ -35,11 +35,12 @@
 
         ctrl.getAll = function(){
             proxy.getAll(function(data){
-            console.dir(data);
                 ctrl.clientes=data;
                 for(var i = 0; i < data.length; i++ ) {
                     var index = data[i].ultimosPagos.length - 1;
                     ctrl.clientes[i].fechaDeVencimiento = data[i].ultimosPagos[index].fechaFin;
+                    var x = Date.parse(new Date(ctrl.clientes[i].fechaDeVencimiento)) + (1000 * 60 * 60 * 24 * 1);//le suma un dia para que quede con la fecha Correcta
+                    ctrl.clientes[i].fechaDeVencimiento = new Date(x);
                 }
             });
         };

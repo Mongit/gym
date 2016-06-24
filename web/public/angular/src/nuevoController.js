@@ -29,11 +29,19 @@ var este = this;
         ctrl.save = function() {
             //ctrl.fechaInicio = inicioModificada || ctrl.getStringDateForDisplayFromMilliSec(ctrl.sugerenciaInicio);
             //ctrl.fechaFin = finModificada || ctrl.getStringDateForDisplayFromMilliSec(ctrl.sugerenciaFin);
-            ctrl.fechaInicio = ctrl.getStringDateForDisplayFromMilliSec(inicioModificada) || ctrl.getStringDateForDisplayFromMilliSec(ctrl.sugerenciaInicio);
+            
+            
+            
+            
+            
+            //ctrl.fechaInicio = ctrl.getStringDateForDisplayFromMilliSec(inicioModificada) || ctrl.getStringDateForDisplayFromMilliSec(ctrl.sugerenciaInicio);
+            ctrl.fechaInicio = inicioModificada || ctrl.getStringDateForDisplayFromMilliSec(ctrl.sugerenciaInicio);
             
           ctrl.sugerenciaFin = fm.getFechaFin(este.getStringDateForDisplayFromMilliSec(inicioModificada), ctrl.tipoPago);
             //ctrl.fechaFin = ctrl.getFechaFinBasadoEntipoPagoYfechaInicio();
             ctrl.fechaFin = ctrl.sugerenciaFin || ctrl.getStringDateForDisplayFromMilliSec(ctrl.fechaFin);
+            
+            
             proxy.save(ctrl, function(data, status, headers, config){
                 $location.path('/');
             });
