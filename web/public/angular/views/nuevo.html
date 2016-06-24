@@ -49,7 +49,6 @@
                           name="fechaInicio"
                           id="fechaInicio"
                           ng-model="ctrl.fechaInicio"
-                          value="ctrl.fechaInicioCambiada"
                           placeholder="Seleccione fecha de inicio"
                           required
                         />
@@ -60,20 +59,20 @@
                 </div>
                 <div class="col-md-6">
                     <fieldset class="form-group">
-                        <label for="fechaFin">Fecha de vencimiento sugerida: {{ctrl.fechaFinCambiada}}</label>
+                        <label for="fechaFin">Fecha de vencimiento:</label>
                         <input
                           type="text"
                           class="form-control"
                           name="fechaFin"
                           id="fechaFin"
                           ng-model = "ctrl.fechaFin"
-                          value="ctrl.fechaFinCambiada"
                           placeholder="Seleccione la fecha de vencimiento"
                           required
                         />
                         <div class="errorMessages" ng-messages="frmNuevo.fechaFin.$error" ng-if="!frmNuevo.fechaFin.$pristine || frmNuevo.$submitted" role="alert" >
                             <div ng-messages-include="./../../../error/errorMessages.html"></div>
                         </div>
+                        <p ng-show="ctrl.fechaPropuesta != undefined">Fecha de vencimiento sugerida: {{ctrl.fechaPropuesta}}</p>
                     </fieldset>
                 </div>
             </div>

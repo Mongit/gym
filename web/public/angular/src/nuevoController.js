@@ -1,7 +1,7 @@
 (function() {
     var app = angular.module('app');
 
-    app.controller('nuevoController', ['$location', 'proxy', 'fechaManagger', function($location, proxy, fechaManagger) {
+    app.controller('nuevoController', ['$location', 'proxy', 'fechaManagger','$scope', function($location, proxy, fechaManagger, scope) {
         var ctrl = this;
         var fm = fechaManagger();
         ctrl.tipoPago;
@@ -9,6 +9,7 @@
         ctrl.fechaFin = "";
         ctrl.fechaInicioCambiada;
         ctrl.fechaFinCambiada;
+        ctrl.fechaPropuesta;
 
         ctrl.getStringDateForDisplayFromMilliSec = function(dateMill){
             var str = fm.getDateStringForDisplayInInput(dateMill);
@@ -56,6 +57,13 @@ var este = this;
                 $location.path('/');
             });
         };
+        ctrl.calcularFechaPropuesta = function(fechaInicio){
+          var that = this;
+          var str = that.getStringDateForDisplayFromMilliSec(fechaInicio);
+          var fechaFinMillisec = fm.getFechaFin(str, ctrl.tipoPago);//fechaInicio es string. sugerenciafin retornara milisec.
+          var fechaFin = fm.getDateStringForDisplayInInput(fechaFinMillisec);
+          return fechaFin;
+        };
 
         //Datepicker
         $(function() {
@@ -66,6 +74,8 @@ var este = this;
             });
             $( "#fechaInicio" ).change(function(){
                 ctrl.fechaInicioCambiada = $(this).val();//facha inicio es un string  "2016-06-16"
+                ctrl.fechaPropuesta = ctrl.calcularFechaPropuesta(ctrl.fechaInicioCambiada);
+                scope.$apply();
             });
             $( "#fechaFin" ).datepicker({
               showWeek: true,
