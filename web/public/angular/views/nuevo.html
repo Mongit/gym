@@ -72,7 +72,7 @@
                         <div class="errorMessages" ng-messages="frmNuevo.fechaFin.$error" ng-if="!frmNuevo.fechaFin.$pristine || frmNuevo.$submitted" role="alert" >
                             <div ng-messages-include="./../../../error/errorMessages.html"></div>
                         </div>
-                        <p ng-show="ctrl.fechaPropuesta != undefined">Fecha de vencimiento sugerida: {{ctrl.fechaPropuesta}}</p>
+                        <small ng-show="ctrl.fechaPropuesta != undefined">Fecha de vencimiento sugerida: {{ctrl.fechaPropuesta}}</small>
                     </fieldset>
                 </div>
             </div>

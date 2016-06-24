@@ -33,6 +33,7 @@
                 $location.path('/');
             });
         };
+
         ctrl.calcularFechaPropuesta = function(fechaInicio){
           var that = this;
           var str = that.getStringDateForDisplayFromMilliSec(fechaInicio);
