@@ -17,6 +17,12 @@
           var result = fechaEnMillisec + dia;
           return result;
         };
+        FechaManagger.prototype.aumentarSieteDias = function(str){
+          var fechaEnMillisec = Date.parse(str);//convierte a millisec.
+          var dia = 1000 * 60 * 60 * 24 * 7;
+          var result = fechaEnMillisec + dia;
+          return result; //en millisec.
+        };
 
         FechaManagger.prototype.getDateStringForDisplayInInput = function(millisecOrString){
           var date = new Date(millisecOrString);

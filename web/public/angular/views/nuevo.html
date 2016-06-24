@@ -14,7 +14,15 @@
                 <label for="tipoPago">Tipo de pago: </label>
                 <div class="radio">
                     <label>
-                        <input type="radio"  name="tipoPagoRadio" id="semanal" value="semanal" ng-model="ctrl.tipoPago" ng-change="{{ctrl.getFechaFinBasadoEntipoPagoYfechaInicio()}}" ng-required="!ctrl.tipoPago"> Semanal (7 días)
+                        <input
+                        type="radio"
+                        name="tipoPagoRadio"
+                        id="semanal"
+                        value="semanal"
+                        ng-model="ctrl.tipoPago"
+                        ng-change="{{ctrl.getFechaFinBasadoEntipoPagoYfechaInicio()}}"
+                        ng-required="!ctrl.tipoPago"
+                        > Semanal (7 días)
                     </label>
                 </div>
                 <div class="radio">
@@ -40,7 +48,8 @@
                           class="form-control"
                           name="fechaInicio"
                           id="fechaInicio"
-                          value="{{ctrl.getStringDateForDisplayFromMilliSec(ctrl.sugerenciaInicio)}}"
+                          ng-model="ctrl.fechaInicio"
+                          value="ctrl.fechaInicioCambiada"
                           placeholder="Seleccione fecha de inicio"
                           required
                         />
@@ -51,13 +60,14 @@
                 </div>
                 <div class="col-md-6">
                     <fieldset class="form-group">
-                        <label for="fechaFin">Fecha de vencimiento: {{ctrl.fechaFin}}</label>
+                        <label for="fechaFin">Fecha de vencimiento sugerida: {{ctrl.fechaFinCambiada}}</label>
                         <input
                           type="text"
                           class="form-control"
                           name="fechaFin"
                           id="fechaFin"
-                          value="{{ctrl.getStringDateForDisplayFromMilliSec(ctrl.sugerenciaFin)}}"
+                          ng-model = "ctrl.fechaFin"
+                          value="ctrl.fechaFinCambiada"
                           placeholder="Seleccione la fecha de vencimiento"
                           required
                         />
