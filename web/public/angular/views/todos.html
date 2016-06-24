@@ -1,8 +1,8 @@
 <div class="jumbotron" ng-controller="TodosController as ctrl">
   <h1>Pagos gym</h1>
   <h4><small>Nota : El cliente debe pagar un día después del la Fv o antes.</br>
-  fv : fecha de vencimiento, último día pagado que se calcula con base en el pago anterior.</br>
-  dpv : Días para vencimiento, días que faltan para la Fv sin contar las horas transcurridas durante el día de hoy.</small></h4>
+  Fv : Fecha de vencimiento, último día pagado que se calcula con base en el pago anterior.</br>
+  Dpv : Días para vencimiento, días que faltan para la Fv sin contar las horas transcurridas durante el día de hoy.</small></h4>
     <table class="table table-sm">
         <thead>
             <tr>
@@ -10,8 +10,8 @@
                 <th>Nombre</th>
                 <th>Agregar pago</th>
                 <th id="tituloTable">Estatus</th>
-                <th id="tituloTable">fv</th>
-                <th id="tituloTable">dpv</th>
+                <th id="tituloTable">Fv</th>
+                <th id="tituloTable">Dpv</th>
                 <th></th>
             </tr>
         </thead>
@@ -38,9 +38,9 @@
 <table class="table table-sm">
         <thead>
             <tr>
-                <th id="vencimientoTodos"> Pago vigente dpv >= 4 </th>
-                <th id="vencimientoTodos"> Pago por vencer dpv <= 3 </th>
-                <th id="vencimientoTodos"> Pago vencido dpv < 0 </th>
+                <th id="vencimientoTodos"> Pago vigente Dpv >= 4 </th>
+                <th id="vencimientoTodos"> Pago por vencer Dpv <= 3 </th>
+                <th id="vencimientoTodos"> Pago vencido Dpv < 0 </th>
 
                 <!--th style="background: '#C9302C' "></th>
                 <th style="background: '#449D44' "></th>
