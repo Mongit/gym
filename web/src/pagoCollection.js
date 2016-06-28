@@ -1,11 +1,12 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-var pagoSchema = Schema({
+var pagoCollection = Schema({
     tipoPago: String,
     fechaInicio: Date,
     fechaFin: Date,
-    fechaCreacion: Date
+    fechaCreacion: Date,
+
 });
 
-module.exports = pagoSchema;
+module.exports = mongoose.model('Pago', pagoCollection)

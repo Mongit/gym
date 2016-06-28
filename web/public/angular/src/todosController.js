@@ -2,7 +2,9 @@
     var app = angular.module('app');
     app.controller('TodosController', ['$location', 'proxy', function($location, proxy) {
         var ctrl = this;
-            ctrl.getDiasParaVencimiento = function(vencimiento){
+        ctrl.clientes = [];
+
+        ctrl.getDiasParaVencimiento = function(vencimiento){
           var today = Date.now();
           var venc = Date.parse( vencimiento );
           var result = venc - today;
@@ -35,12 +37,8 @@
 
         ctrl.getAll = function(){
             proxy.getAll(function(data){
-            //console.dir(data);
+              console.log(data);
                 ctrl.clientes=data;
-                for(var i = 0; i < data.length; i++ ) {
-                    var index = data[i].ultimosPagos.length - 1;
-                    ctrl.clientes[i].fechaDeVencimiento = data[i].ultimosPagos[index].fechaFin;
-                }
             });
         };
         ctrl.getAll();

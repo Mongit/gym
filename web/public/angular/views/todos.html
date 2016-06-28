@@ -20,9 +20,9 @@
                 <th scope="row">{{$index + 1}}</th>
                 <td>{{cliente.nombre}}</td>
                 <td id="vencimientoTodos"><a href="#/editar/{{cliente._id}}">pagar</a></td>
-                <td style="background: {{ctrl.getColor(ctrl.getDiasParaVencimiento(cliente.fechaDeVencimiento))}} "> </td>
-                <td id="vencimientoTodos">{{ctrl.getDateInHumanReadable(cliente.fechaDeVencimiento)}}</td>
-                <td id="vencimientoTodos">{{ctrl.getDiasParaVencimiento(cliente.fechaDeVencimiento)}}</td>
+                <td style="background: {{ctrl.getColor(ctrl.getDiasParaVencimiento(cliente._pagos[0].fechaFin))}} "> </td>
+                <td id="vencimientoTodos">{{ctrl.getDateInHumanReadable(cliente._pagos[0].fechaFin)}}</td>
+                <td id="vencimientoTodos">{{ctrl.getDiasParaVencimiento(cliente._pagos[0].fechaFin)}}</td>
                 <td>
                     <a href="#" ng-click="ctrl.delete(cliente._id)">Borrar</a>
                 </td>
