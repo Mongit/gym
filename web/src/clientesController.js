@@ -14,8 +14,6 @@ module.exports = (function() {
 
         router.get('/lastpay/:id', clientesApi.getOneWithLastPay.bind(clientesApi));
 
-      //  router.put('/:id', clientesApi.agregarPago.bind(clientesApi));
-
         router.delete('/:id', clientesApi.delete.bind(clientesApi));
     }
 

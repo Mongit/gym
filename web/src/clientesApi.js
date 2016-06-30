@@ -15,6 +15,7 @@ var ClientesApi = (function() {
          })
         .exec(function (err, clientes) {
             if (err) return next(err);
+
             return res.json(clientes);
           });
         };
@@ -64,12 +65,26 @@ var ClientesApi = (function() {
 //curl -X PUT -i -H "Content-Type: application/json" -d '{ "tipoPago": "semanal", "fechaInicio":"2016,05,25", "fechaFin":"2016,06,25", "fechaCreacion":"2016,05,20" }' http://localhost:3000/clientes/api/57715e68d2216852139e11e9
 
 
-//curl -X "DELETE" http://localhost:3000/clientes/api/57729670ec96e0850c5ca88d
+//curl -X "DELETE" http://localhost:3000/clientes/api/577566c637f5bac8122ec538
     ClientesApi.prototype.delete = function(req, res, next) {
         var that = this;
-        that.models.cliente.remove({_id : req.params.id}, function(err, borrado) {
+        var idCliente = req.params.id;
+        that.models.cliente.findById({_id : idCliente }, function (err, cliente) {
             if(err) return next(err);
-            res.json(borrado);
+
+            var pagosArr = cliente._pagos;
+            var pagosBorrados = 0;
+            for (i = 0; i < pagosArr.length; i++) {
+              that.models.pago.remove({_id : pagosArr[i]}, function(err, borrado) {
+                  if(err) return next(err);
+                  pagosBorrados = pagosBorrados + 1;
+              });
+              console.log("pagos borrados = " + pagosBorrados);
+            }
+            that.models.cliente.remove({_id : idCliente}, function(err, borrado) {
+                if(err) return next(err);
+                res.json(borrado);
+            });
         });
     };
 
