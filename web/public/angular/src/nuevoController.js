@@ -11,18 +11,13 @@
         ctrl.fechaFinCambiada;
         ctrl.fechaPropuesta;
 
-        ctrl.getStringDateForDisplayFromMilliSec = function(dateMill){
-            var str = fm.getDateStringForDisplayInInput(dateMill);
-            return str;
-        };
-
 
         ctrl.getFechaFinBasadoEntipoPagoYfechaInicio = function(){
           var that = this;
-          var sugerenciaInicioSting = that.getStringDateForDisplayFromMilliSec(Date.now());
-          var fechaFinMillisec = fm.getFechaFin(sugerenciaInicioSting, ctrl.tipoPago);//fechaInicio es string. sugerenciafin retornara milisec.
-          ctrl.fechaInicio = fm.getDateStringForDisplayInInput(Date.now());
-          ctrl.fechaFin = fm.getDateStringForDisplayInInput(fechaFinMillisec);
+          var today = moment();
+          var fechaFin = fm.getFechaFin(today, ctrl.tipoPago);
+          ctrl.fechaInicio = today.format("YYYY-MM-DD");
+          ctrl.fechaFin = fechaFin.format("YYYY-MM-DD");
         };
 
         //Server Call
