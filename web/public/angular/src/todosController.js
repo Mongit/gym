@@ -2,6 +2,8 @@
     var app = angular.module('app');
     app.controller('TodosController', ['$location', 'proxy', function($location, proxy) {
         var ctrl = this;
+
+        ctrl.now = moment();
         ctrl.clientes = [];
 
         ctrl.getDiasParaVencimiento = function(vencimiento){

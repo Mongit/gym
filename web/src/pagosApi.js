@@ -7,8 +7,6 @@ var PagosApi = (function() {
     };
 
 //curl http://localhost:3000/pagos/api/
-
-
   PagosApi.prototype.getAll = function(req, res, next) {
       var that = this;
       that.models.pago.find().
