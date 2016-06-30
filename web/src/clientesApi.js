@@ -15,7 +15,6 @@ var ClientesApi = (function() {
          })
         .exec(function (err, clientes) {
             if (err) return next(err);
-            console.log(clientes);
             return res.json(clientes);
           });
         };
@@ -23,11 +22,12 @@ var ClientesApi = (function() {
 //curl -i -H "Content-Type: application/json" -d '{ "nombre": "jonas", "tipoPago": "semanal", "activo": true, "fechaInicio":"2016,05,10", "fechaFin":"2016,06,20" }' http://localhost:3000/clientes/api/
     ClientesApi.prototype.save = function(req, res, next){
         var that = this;
+        console.log(req.body);
         var pago = that.pagoFactory.get();
         pago.tipoPago = req.body.tipoPago;
         pago.fechaInicio = req.body.fechaInicio;
         pago.fechaFin = req.body.fechaFin;
-        pago.fechaCreacion = Date.now();
+        pago.fechaCreacion = req.body.fechaCreacion;
         pago.save(function(err,pago){
           if (err) return next(err);
           var cliente = that.clienteFactory.get();

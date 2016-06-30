@@ -25,7 +25,7 @@ var PagosApi = (function() {
         pago.tipoPago = req.body.tipoPago;
         pago.fechaInicio = req.body.fechaInicio;
         pago.fechaFin = req.body.fechaFin;
-        pago.fechaCreacion = Date.now();
+        pago.fechaCreacion = req.body.fechaCreacion;
         pago.save(function(err,pago){
           if (err) return next(err);
           that.models.cliente.findById(req.params.clienteId, function (err, cliente) {

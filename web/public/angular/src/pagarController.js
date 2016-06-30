@@ -22,6 +22,7 @@
         getOne(ctrl.clienteId);
 
         ctrl.pagar = function(){
+            ctrl.fechaCreacion = moment().format("YYYY-MM-DD");//para que sea un string en el server y se guarde, entonces en el get, se convierta en utc.
             proxy.saveWithId(ctrl.clienteId, ctrl, function(data, status, headers, config){
                 alert("Pago registrado");
                 $location.path('/');
