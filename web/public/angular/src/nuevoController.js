@@ -1,16 +1,16 @@
 (function() {
     var app = angular.module('app');
 
-    app.controller('nuevoController', ['$location', 'proxy', 'fechaManagger','$scope', function($location, proxy, fechaManagger, scope) {
+    app.controller('nuevoController', ['$location', 'proxy', 'fechaManagger','$scope','tokenStorage', function($location, proxy, fechaManagger, scope, tokenStorage) {
         var ctrl = this;
         var fm = fechaManagger();
+        ctrl._userId = tokenStorage.getId();
         ctrl.tipoPago;
         ctrl.fechaInicio = "";
         ctrl.fechaFin = "";
         ctrl.fechaInicioCambiada;
         ctrl.fechaFinCambiada;
         ctrl.fechaPropuesta;
-
 
         ctrl.getFechaFinBasadoEntipoPagoYfechaInicio = function(){
           var today = moment();
@@ -25,7 +25,7 @@
             ctrl.fechaInicio = ctrl.fechaInicioCambiada || ctrl.fechaInicio;
             ctrl.fechaFin = ctrl.fechaFinCambiada || ctrl.fechaFin;
             proxy.save(ctrl, function(data, status, headers, config){
-                $location.path('/');
+                $location.path('/todos');
             });
         };
 

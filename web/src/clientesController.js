@@ -8,6 +8,8 @@ module.exports = (function() {
 
         router.get('/', clientesApi.getAll.bind(clientesApi));
 
+        router.get('/clientesDeUsuario/:userId', clientesApi.clientesDeUsuario.bind(clientesApi));
+
         router.post('/', clientesApi.save.bind(clientesApi));
 
         router.get('/:id', clientesApi.getOne.bind(clientesApi));

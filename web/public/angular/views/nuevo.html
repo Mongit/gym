@@ -1,7 +1,6 @@
 <div class="container" ng-controller="nuevoController as ctrl">
-    <h1>Nuevo registro</h1>
     <div class="jumbotron">
-        <h1>Nuevo Usuario</h1>
+        <h1>Nuevo registro</h1>
         <form name="frmNuevo" ng-submit="frmNuevo.$valid && ctrl.save()" role="form" novalidate>
             <fieldset class="form-group">
                 <label for="nombre">Nombre: </label>
@@ -11,7 +10,7 @@
                 </div>
             </fieldset>
             <fieldset class="form-group">
-                <label for="tipoPago">Tipo de pago: (se paga el día de hoy y cuenta como día 1)</label>
+                <label for="tipoPago">Tipo de pago: (se paga el día de hoy)</label>
                 <div class="radio">
                     <label>
                         <input
@@ -22,17 +21,17 @@
                         ng-model="ctrl.tipoPago"
                         ng-change="{{ctrl.getFechaFinBasadoEntipoPagoYfechaInicio()}}"
                         ng-required="!ctrl.tipoPago"
-                        > Semanal (7 días)
+                        > Semanal
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="tipoPagoRadio" id="quincenal" value="quincenal" ng-model="ctrl.tipoPago" ng-required="!ctrl.tipoPago"> Quincenal Semanal (14 días)
+                        <input type="radio" name="tipoPagoRadio" id="quincenal" value="quincenal" ng-model="ctrl.tipoPago" ng-required="!ctrl.tipoPago"> Quincenal
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="tipoPagoRadio" id="mensual" value="mensual" ng-model="ctrl.tipoPago" ng-required="!ctrl.tipoPago"> Mensual (30 días)
+                        <input type="radio" name="tipoPagoRadio" id="mensual" value="mensual" ng-model="ctrl.tipoPago" ng-required="!ctrl.tipoPago"> Mensual
                     </label>
                 </div>
                 <div class="errorMessages" ng-messages="frmNuevo.tipoPagoRadio.$error" ng-if="!frmNuevo.tipoPagoRadio.$pristine || frmNuevo.$submitted" role="alert" >
@@ -77,7 +76,7 @@
                 </div>
             </div>
             <br />
-            <a class="btn btn-primary" href="#/">Regresar</a>
+            <a class="btn btn-primary" href="#/todos">Regresar</a>
             <button type="submit" class="btn btn-success">Guardar</button>
         </form>
     </div>

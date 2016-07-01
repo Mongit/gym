@@ -18,6 +18,13 @@
                 url: that.url
             }).success(success).error(that.error);
         };
+        Proxy.prototype.getAllFromUser = function(userId, success) {
+            var that = this;
+            $http({
+                method: 'GET',
+                url: that.url + "clientesDeUsuario/" + userId,
+            }).success(success).error(that.error);
+        };
 
         Proxy.prototype.getOne = function(id, success) {
          var that = this;
