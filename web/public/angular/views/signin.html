@@ -5,18 +5,18 @@
                       ng-controller="SigninController as ctrl"
                       novalidate>
         <div class="form-group">
-          <input type="email" name="email" placeholder="Email" class="form-control" ng-model="ctrl.email" required>
-          <div class="jonasValidation" ng-messages="frmSignin.email.$error" ng-if="!frmSignin.email.$pristine || frmSignin.$submitted" role="alert" >
-            <div ng-messages-include="/error/messages.html"></div>
+          <input type="email" name="email" placeholder="Email" class="form-control" ng-model="ctrl.email" ng-pattern="/^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$/" required>
+          <div class="errorMessages" ng-messages="frmSignin.email.$error" ng-if="!frmSignin.email.$pristine || frmSignin.$submitted" role="alert" >
+            <div ng-messages-include="./../../../error/errorMessages.html"></div>
           </div>
         </div>
         <div class="form-group">
           <input type="password" name="password" placeholder="Password" class="form-control" ng-model="ctrl.password" required>
-          <div class="jonasValidation" ng-messages="frmSignin.password.$error" ng-if="!frmSignin.password.$pristine || frmSignin.$submitted" role="alert" >
-            <div ng-messages-include="/error/messages.html"></div>
+          <div class="errorMessages" ng-messages="frmSignin.password.$error" ng-if="!frmSignin.password.$pristine || frmSignin.$submitted" role="alert" >
+            <div ng-messages-include="./../../../error/errorMessages.html"></div>
           </div>
         </div>
-        <button type="submit" class="btn btn-success">Sign in</button>
+        <button type="submit" class="btn btn-success">Entrar</button>
       </form>
     </div><!--/.navbar-collapse -->
   </div>
@@ -25,11 +25,10 @@
 <div class="jumbotron">
   <div class="container">
     <h1>Bienvenido!</h1>
-    <p>Balances es un programa que te permite obtener un informe de las cuentas de una empresa, comparando sus ingresos y egresos para establecer el nivel de beneficios o pérdidas.
-
-        Únicamente tienes que proporcionar tu correo electrónico y una constraseña para poder ingresar al programa.</p>
+    <p>Pagos de clientes es un programa que te permite conocer en un sólo vistazo los clienes que se encuentran al corriente con su pago, los que estan a punto de pagar y los que tienen un pago vencido.
+        Haga sus cobros a tiempo, administre mejor su negocio y gane más dinero.</p>
     <p>
-    <a class="btn btn-primary btn-lg" href="#/signup" role="button">Sign up &raquo;</a>
+    <a class="btn btn-primary btn-lg" href="#/signup" role="button">Registrarse &raquo;</a>
     </p>
   </div>
 </div>

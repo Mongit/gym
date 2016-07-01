@@ -1,9 +1,11 @@
 <div class="jumbotron" ng-controller="TodosController as ctrl">
-
+  <a class="pull-right" href ng-click="ctrl.logout()">Cerrar mi sesión {{ctrl.emailUsuario}}</a>
   <h1>Pagos gym</h1>
+
   <h4><small>Nota : El cliente debe pagar un día después del la Fv o antes.<br>
   Fv : Fecha de vencimiento, último día pagado que se calcula con base en el pago anterior.<br>
   Dpv : Días para vencimiento, días que faltan para la Fv sin contar las horas transcurridas durante el día de hoy.</small></h4>
+
     <table class="table table-sm">
         <thead>
             <tr>

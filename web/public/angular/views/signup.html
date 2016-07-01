@@ -7,15 +7,15 @@
         <div class="form-group">
 
         Email:<input class="form-control" type="email" name="email" ng-model="ctrl.email"
-                      required maxlength="60" style="width:30%;"/>
-              <div class="jonasValidation" ng-messages="frmSignup.email.$error" ng-if="!frmSignup.email.$pristine || frmSignup.$submitted" role="alert" >
-                <div ng-messages-include="/error/messages.html"></div>
+                       maxlength="60" style="width:30%;" ng-pattern="/^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$/" required/>
+              <div class="errorMessages" ng-messages="frmSignup.email.$error" ng-if="!frmSignup.email.$pristine || frmSignup.$submitted" role="alert" >
+                <div ng-messages-include="./../../../error/errorMessages.html"></div>
               </div>
 
         Password:<input  class="form-control" type="password" name="password" ng-model="ctrl.password"
                             required required maxlength="60"  style="width:30%;"/>
-            <div class="jonasValidation" ng-messages="frmSignup.password.$error" ng-if="!frmSignup.password.$pristine || frmSignup.$submitted" role="alert" >
-            <div ng-messages-include="/error/messages.html"></div>
+            <div class="errorMessages" ng-messages="frmSignup.password.$error" ng-if="!frmSignup.password.$pristine || frmSignup.$submitted" role="alert" >
+            <div ng-messages-include="./../../../error/errorMessages.html"></div>
           </div>
           </div>
         <input type="submit" class="btn btn-primary btn-lg" role="button" value="Signup" />

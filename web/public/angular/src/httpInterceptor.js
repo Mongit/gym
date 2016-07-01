@@ -9,7 +9,6 @@
 
             // optional method
             'request': function(request) {
-
                 // if is not listed in the freeAccessPages array
                 if (freeAccesPages.indexOf($location.path()) === -1) {
                     var tokenObj = tokenStorage.getToken();
@@ -21,7 +20,6 @@
 
                 //set 'x-access-token' header
                 request.headers['x-access-token'] = tokenStorage.getAccessHeader();
-
                 return request;
             },
 

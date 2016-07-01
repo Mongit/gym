@@ -6,6 +6,12 @@
         var fm = fechaManagger();
         ctrl.now = moment();
         ctrl.clientes = [];
+        ctrl.emailUsuario = "";
+
+        ctrl.getEmail = function (){
+          ctrl.emailUsuario = tokenStorage.getEmail();
+        };
+        ctrl.getEmail();
 
         ctrl.getDiasParaVencimiento = function(vencimiento){
           return fm.getDiasParaVencimiento(vencimiento);
@@ -29,6 +35,12 @@
             });
         };
         ctrl.getAll();
+
+        ctrl.logout = function (){
+          tokenStorage.clearToken();
+          $location.path("/");
+          return false;
+        };
 
         ctrl.delete = function (id) {
             proxy.delete(id,function(){
