@@ -18,11 +18,23 @@ var ClientesApi = (function() {
             return res.json(clientes);
           });
         };
+        //curl http://localhost:3000/clientes/api/clientesDeUsuario/465456
+       ClientesApi.prototype.clientesDeUsuario = function(req, res, next) {
+           var that = this;
+           that.models.cliente.find({'_userId': req.params.userId }).populate({
+             path: '_pagos',
+             options: { limit: 1, sort: '-fechaFin' }
+           })
+          .exec(function (err, clientes) {
+              if (err) return next(err);
+              console.log(clientes);
+              return res.json(clientes);
+            });
+          };
 //guarda un cliente y su primer pago.
 //curl -i -H "Content-Type: application/json" -d '{ "nombre": "jonas", "tipoPago": "semanal", "activo": true, "fechaInicio":"2016,05,10", "fechaFin":"2016,06,20" }' http://localhost:3000/clientes/api/
     ClientesApi.prototype.save = function(req, res, next){
         var that = this;
-        console.log(req.body);
         var pago = that.pagoFactory.get();
         pago.tipoPago = req.body.tipoPago;
         pago.fechaInicio = req.body.fechaInicio;
@@ -33,10 +45,12 @@ var ClientesApi = (function() {
           var cliente = that.clienteFactory.get();
           cliente.nombre = req.body.nombre;
           cliente.activo = req.body.activo;
+          cliente._userId = req.body._userId;
           cliente._pagos.push(pago._id)
           cliente.save(function (err, cliente) {
             if (err) return next(err);
-                        res.json(cliente);
+                console.log(cliente);
+                res.json(cliente);
           });
         });
       };

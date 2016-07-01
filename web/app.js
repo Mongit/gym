@@ -10,6 +10,7 @@ db.connect(process.env.CONNECTION_STRING || 'mongodb://localhost/clientes');
 
 var clientes = container.get("clientesController");
 var pagos = container.get("pagosController");
+var usuarios = container.get("usuariosController");
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -31,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/clientes/api', clientes.router);
 app.use('/pagos/api', pagos.router);
+app.use('/usuarios/api', usuarios.router);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
