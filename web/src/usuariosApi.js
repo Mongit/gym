@@ -42,16 +42,6 @@ var UsuariosApi = (function() {
             });
         });
     };
-    //curl http://localhost:3000/usuarios/api/
-    UsuariosApi.prototype.getAll = function(req, res, next) {
-        var that = this;
-        that.models.usuario.find().
-        exec(function (err, usuarios) {
-           if (err) return next(err);
-           console.log(usuarios);
-           return res.json(usuarios);
-         });
-    };
 
     UsuariosApi.prototype.save = function(req, res, next) {
         var that = this;
@@ -66,6 +56,17 @@ var UsuariosApi = (function() {
         });
     };
 
+    //curl http://localhost:3000/usuarios/api/
+    UsuariosApi.prototype.getAll = function(req, res, next) {
+        var that = this;
+        that.models.usuario.find().
+        exec(function (err, usuarios) {
+           if (err) return next(err);
+           console.log(usuarios);
+           return res.json(usuarios);
+         });
+    };
+//borra solo el usuario, no el cliente ni los pagos, cuidado.
     //curl -X "DELETE" http://localhost:3000/usuarios/api/577566c637f5bac8122ec537
     UsuariosApi.prototype.delete = function(req, res, next) {
         var that = this;
@@ -74,7 +75,6 @@ var UsuariosApi = (function() {
             res.json(borrado);
         });
     };
-
 
     return UsuariosApi;
 })();

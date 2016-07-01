@@ -77,7 +77,7 @@ var ClientesApi = (function() {
            };
 //curl -X PUT -i -H "Content-Type: application/json" -d '{ "tipoPago": "semanal", "fechaInicio":"2016,05,25", "fechaFin":"2016,06,25", "fechaCreacion":"2016,05,20" }' http://localhost:3000/clientes/api/57715e68d2216852139e11e9
 
-//borrar un cliente con todos sus pagos.
+//borrar un cliente con todos sus pagos.cuidado.
 //curl -X "DELETE" http://localhost:3000/clientes/api/57767603eb2d05420ea45bdc
     ClientesApi.prototype.delete = function(req, res, next) {
         var that = this;

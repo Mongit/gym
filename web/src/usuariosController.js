@@ -7,6 +7,8 @@ module.exports = (function() {
         var router = this.router;
         var that = this;
 
+        router.get('/', usuariosApi.getAll.bind(usuariosApi));
+
         router.post('/signin', usuariosApi.findByEmail.bind(usuariosApi));
 
         router.post('/signup', usuariosApi.save.bind(usuariosApi));
