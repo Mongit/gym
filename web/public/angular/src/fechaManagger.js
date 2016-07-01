@@ -36,7 +36,7 @@
             fechaFinObj = fechaInicioClon.add(1, 'months');
             return fechaFinObj;
           }
-          return;
+          return fechaInicioClon;
         };
 
         return function() {
