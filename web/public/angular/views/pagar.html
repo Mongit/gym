@@ -1,7 +1,7 @@
-<div class="container" ng-controller="EditarController as ctrl">
+<div class="container" ng-controller="PagarController as ctrl">
     <div class="jumbotron">
         <h1>Agregar Pago</h1>
-        <form name="frmNuevo" ng-submit="frmNuevo.$valid && ctrl.editar()" role="form" novalidate>
+        <form name="frmNuevo" ng-submit="frmNuevo.$valid && ctrl.pagar()" role="form" novalidate>
             <fieldset class="form-group">
                 <label for="nombre">Nombre: </label>
                 <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre del cliente" ng-model="ctrl.nombre" required>
@@ -13,12 +13,12 @@
                 <label for="tipoPago">Tipo de pago: </label>
                 <div class="radio">
                     <label>
-                        <input type="radio"  ng-change="{{ctrl.getFechaFin()}}" name="tipoPagoRadio" id="semanal" value="semanal" ng-model="ctrl.tipoPago" ng-required="!ctrl.tipoPago"> Semanal
+                        <input type="radio"  name="tipoPagoRadio" id="semanal" value="semanal" ng-model="ctrl.tipoPago" ng-required="!ctrl.tipoPago"> Semanal
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio"  ng-change="{{ctrl.getFechaFin()}} name="tipoPagoRadio" id="quincenal" value="quincenal" ng-model="ctrl.tipoPago" ng-required="!ctrl.tipoPago"> Quincenal
+                        <input type="radio"   name="tipoPagoRadio" id="quincenal" value="quincenal" ng-model="ctrl.tipoPago" ng-required="!ctrl.tipoPago"> Quincenal
                     </label>
                 </div>
                 <div class="radio">

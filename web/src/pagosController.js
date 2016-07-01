@@ -7,12 +7,8 @@ module.exports = (function() {
         var router = this.router;
 
         router.get('/', pagosApi.getAll.bind(pagosApi));
-/*
-        router.get('/ultimos', pagosApi.getLastPaids.bind(pagosApi));
-*/
-    //    router.post('/', pagosApi.save.bind(pagosApi));
 
-        
+        router.post('/:clienteId', pagosApi.save.bind(pagosApi));
 
         router.get('/:id', pagosApi.getOne.bind(pagosApi));
 

@@ -27,11 +27,28 @@
          }).success(success).error(that.error);
         };
 
+        Proxy.prototype.getOneWithLastPay = function(id, success) {
+         var that = this;
+         $http({
+             method: "GET",
+             url: that.url + "lastpay/" + id
+         }).success(success).error(that.error);
+        };
+
         Proxy.prototype.save = function(model, success) {
             var that = this;
             $http({
                 method: 'POST',
                 url: that.url,
+                data: model
+            }).success(success).error(that.error);
+        };
+
+        Proxy.prototype.saveWithId = function(id, model, success) {
+            var that = this;
+            $http({
+                method: 'POST',
+                url: that.url + id,
                 data: model
             }).success(success).error(that.error);
         };

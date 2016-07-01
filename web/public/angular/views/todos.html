@@ -1,4 +1,5 @@
 <div class="jumbotron" ng-controller="TodosController as ctrl">
+
   <h1>Pagos gym</h1>
   <h4><small>Nota : El cliente debe pagar un día después del la Fv o antes.</br>
   Fv : Fecha de vencimiento, último día pagado que se calcula con base en el pago anterior.</br>
@@ -20,9 +21,9 @@
                 <th scope="row">{{$index + 1}}</th>
                 <td>{{cliente.nombre}}</td>
                 <td id="vencimientoTodos"><a href="#/editar/{{cliente._id}}">pagar</a></td>
-                <td style="background: {{ctrl.getColor(ctrl.getDiasParaVencimiento(cliente.fechaDeVencimiento))}} "> </td>
-                <td id="vencimientoTodos">{{ctrl.getDateInHumanReadable(cliente.fechaDeVencimiento)}}</td>
-                <td id="vencimientoTodos">{{ctrl.getDiasParaVencimiento(cliente.fechaDeVencimiento)}}</td>
+                <td style="background: {{ctrl.getColor(ctrl.getDiasParaVencimiento(cliente._pagos[0].fechaFin))}} "> </td>
+                <td id="vencimientoTodos">{{ctrl.getDateInHumanReadable(cliente._pagos[0].fechaFin)}}</td>
+                <td id="vencimientoTodos">{{ctrl.getDiasParaVencimiento(cliente._pagos[0].fechaFin)}}</td>
                 <td>
                     <a href="#" ng-click="ctrl.delete(cliente._id)">Borrar</a>
                 </td>

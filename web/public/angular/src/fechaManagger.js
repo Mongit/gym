@@ -5,61 +5,35 @@
 
         var FechaManagger = function() {
         };
-        FechaManagger.prototype.aumentarUnDia = function(str){
-          var fechaEnMillisec = Date.parse(str);//convierte a millisec.
-          var dia = 1000 * 60 * 60 * 24 * 1;
-          var result = fechaEnMillisec + dia;
+
+        FechaManagger.prototype.getDiasParaVencimiento = function(vencimiento){
+          var today = moment();
+          var venc = moment( vencimiento );
+          var days = venc.diff(today, 'days', true);
+          return days;
+        };
+        FechaManagger.prototype.getDateInHumanReadable = function(str){
+          var result = moment.utc(str).format("YYYY-MM-DD");//utc va adelante de local time, si lo despliego en local(default), será un día atras puesto que utc está a media noche.
           return result;
         };
-        FechaManagger.prototype.aumentarUnDosDias = function(str){
-          var fechaEnMillisec = Date.parse(str);//convierte a millisec.
-          var dia = 1000 * 60 * 60 * 24 * 2;
-          var result = fechaEnMillisec + dia;
-          return result;
-        };
-        FechaManagger.prototype.aumentarSieteDias = function(str){
-          var fechaEnMillisec = Date.parse(str);//convierte a millisec.
-          var dia = 1000 * 60 * 60 * 24 * 7;
-          var result = fechaEnMillisec + dia;
-          return result; //en millisec.
-        };
 
-        FechaManagger.prototype.getDateStringForDisplayInInput = function(millisecOrString){
-          var date = new Date(millisecOrString);
-          var curr_date = date.getDate();
-          var curr_month = date.getMonth() + 1; //Months are zero based
-          var curr_year = date.getFullYear();
-          if(curr_date<10){
-            curr_date = "0" + curr_date;
-          }
-          if(curr_month<10){
-            curr_month = "0" + curr_month;
-          }
-          var str = curr_year + "-" + curr_month + "-" + curr_date;
-          return str;
-        };
-
-        FechaManagger.prototype.getFechaFin = function(fechaInicio, tipoPago) {
+        FechaManagger.prototype.getFechaFin = function(fechaInicioObj, tipoPago) {
           var that = this;
-          var fechaFin;
-          var week = 1000 * 60 * 60 * 24 * 7;
-          var twoWeeks = 1000 * 60 * 60 * 24 * 14;
-          var oneMonth = 1000 * 60 * 60 * 24 * 30;
-          var fechaInicioEnMillisec = Date.parse(fechaInicio);//convierte a millisec.
-
+          var fechaFinObj;
+          var fechaInicioClon = moment(fechaInicioObj);//because mutability
           if(tipoPago === "semanal"){
-            fechaFin = fechaInicioEnMillisec + week;
-            return fechaFin;//retorna milllisec
+            fechaFinObj = fechaInicioClon.add(1, "w");
+            return fechaFinObj;
           };
 
           if(tipoPago === "quincenal"){
-            fechaFin = fechaInicioEnMillisec + twoWeeks;
-            return fechaFin;
+            fechaFinObj = fechaInicioClon.add(2, "w");
+            return fechaFinObj;
           };
 
           if(tipoPago === "mensual"){
-            fechaFin = fechaInicioEnMillisec + oneMonth;
-            return fechaFin;
+            fechaFinObj = fechaInicioClon.add(1, 'months');
+            return fechaFinObj;
           }
           return;
         };
