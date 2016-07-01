@@ -42,7 +42,7 @@ container.register("pagosApi", PagosApi);
 container.register("usuariosApi", UsuariosApi);
 container.register("clientesController", ClientesController);
 container.register("pagosController", PagosController);
-container.register("usuariossController", UsuariosController);
+container.register("usuariosController", UsuariosController);
 container.register("express", { module: require('express') });
 container.register("mongoose", { module: require('mongoose') });
 container.register("jwt", { module: require('jwt-simple') });

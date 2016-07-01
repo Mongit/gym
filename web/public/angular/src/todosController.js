@@ -1,7 +1,8 @@
 (function() {
     var app = angular.module('app');
-    app.controller('TodosController', ['$location', 'proxy', 'fechaManagger', function($location, proxy, fechaManagger) {
+    app.controller('TodosController', ['$location', 'proxy', 'fechaManagger', 'tokenStorage', function($location, proxy, fechaManagger, tokenStorage) {
         var ctrl = this;
+        ctrl._userId = tokenStorage.getId();
         var fm = fechaManagger();
         ctrl.now = moment();
         ctrl.clientes = [];
@@ -23,7 +24,7 @@
         };
 
         ctrl.getAll = function(){
-            proxy.getAll(function(data){
+            proxy.getAllFromUser(ctrl._userId, function(data){
                 ctrl.clientes=data;
             });
         };
