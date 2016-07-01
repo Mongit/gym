@@ -46,8 +46,7 @@ var PagosApi = (function() {
         });
     };
 
-//curl -X "DELETE" http://localhost:3000/pagos/api/576821fd92dea54d668fd3d3
-//borrar cliente junto con toooodos sus pagos
+//curl -X "DELETE" http://localhost:3000/pagos/api/577566c637f5bac8122ec537
     PagosApi.prototype.delete = function(req, res, next) {
         var that = this;
         that.models.pago.remove({_id : req.params.id}, function(err, borrado) {
