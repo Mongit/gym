@@ -10,6 +10,7 @@
           var today = moment();
           var venc = moment( vencimiento );
           var days = venc.diff(today, 'days', true);
+          days = Math.round( days * 10) / 10
           return days;
         };
         FechaManagger.prototype.getDateInHumanReadable = function(str){
