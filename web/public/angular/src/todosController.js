@@ -35,6 +35,7 @@
 
         ctrl.getAll = function(){
             proxy.getAll(function(data){
+            //console.dir(data);
                 ctrl.clientes=data;
                 for(var i = 0; i < data.length; i++ ) {
                     var index = data[i].ultimosPagos.length - 1;

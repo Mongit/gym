@@ -51,8 +51,8 @@
             });
             $( "#fechaInicio" ).change(function(){
                 ctrl.fechaInicioCambiada = $(this).val();//facha inicio es un string  "2016-06-16"
-                ctrl.fechaPropuesta = ctrl.calcularFechaPropuesta(ctrl.fechaInicioCambiada);
-                scope.$apply();
+            //    ctrl.fechaPropuesta = ctrl.calcularFechaPropuesta(ctrl.fechaInicioCambiada);
+            //    scope.$apply();
             });
             $( "#fechaFin" ).datepicker({
               showWeek: true,

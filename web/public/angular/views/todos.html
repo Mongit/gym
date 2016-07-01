@@ -1,21 +1,25 @@
 <div class="jumbotron" ng-controller="TodosController as ctrl">
-  <h1>Clientes del gym</h1>
-  <p>Click sobre el nombre del cliente para agregar un pago.</p>
+  <h1>Pagos gym</h1>
+  <h4><small>Nota : El cliente debe pagar un día después del la Fv o antes.</br>
+  Fv : Fecha de vencimiento, último día pagado que se calcula con base en el pago anterior.</br>
+  Dpv : Días para vencimiento, días que faltan para la Fv sin contar las horas transcurridas durante el día de hoy.</small></h4>
     <table class="table table-sm">
         <thead>
             <tr>
                 <th id="tituloTable">#</th>
                 <th>Nombre</th>
+                <th>Agregar pago</th>
                 <th id="tituloTable">Estatus</th>
-                <th id="tituloTable">Fecha de vencimiento</th>
-                <th id="tituloTable">días para vencimiento + hoy</th>
+                <th id="tituloTable">Fv</th>
+                <th id="tituloTable">Dpv</th>
                 <th></th>
             </tr>
         </thead>
         <tbody ng-repeat="cliente in ctrl.clientes">
             <tr>
                 <th scope="row">{{$index + 1}}</th>
-                <td><a href="#/editar/{{cliente._id}}">{{cliente.nombre}}</a></td>
+                <td>{{cliente.nombre}}</td>
+                <td id="vencimientoTodos"><a href="#/editar/{{cliente._id}}">pagar</a></td>
                 <td style="background: {{ctrl.getColor(ctrl.getDiasParaVencimiento(cliente.fechaDeVencimiento))}} "> </td>
                 <td id="vencimientoTodos">{{ctrl.getDateInHumanReadable(cliente.fechaDeVencimiento)}}</td>
                 <td id="vencimientoTodos">{{ctrl.getDiasParaVencimiento(cliente.fechaDeVencimiento)}}</td>
@@ -34,9 +38,10 @@
 <table class="table table-sm">
         <thead>
             <tr>
-                <th id="vencimientoTodos"> Pago vencido </th>
-                <th id="vencimientoTodos"> Pago vigente </th>
-                <th id="vencimientoTodos"> Pago a punto de vencer </th>
+                <th id="vencimientoTodos"> Pago vigente Dpv >= 4 </th>
+                <th id="vencimientoTodos"> Pago por vencer Dpv <= 3 </th>
+                <th id="vencimientoTodos"> Pago vencido Dpv < 0 </th>
+
                 <!--th style="background: '#C9302C' "></th>
                 <th style="background: '#449D44' "></th>
                 <th style="background: '#EC971F' "></th-->
@@ -44,9 +49,10 @@
         </thead>
         <tbody>
             <tr>
-                <td style="background: #C9302C "></td>
                 <td style="background: #449D44 "></td>
                 <td style="background: #EC971F "></td>
+                <td style="background: #C9302C "></td>
+
                 <!--td> Días de vencido </td>
                 <td> Días de membrecía </td>
                 <td> Días antes de vencer </td-->
