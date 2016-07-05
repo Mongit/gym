@@ -19,6 +19,11 @@
             });
         };
 
+        ctrl.getFechaFinBasadoEntipoPagoYfechaInicio = function(){
+          var fechaFin = fm.getFechaFin(moment(ctrl.fechaInicio), ctrl.tipoPago);
+          ctrl.fechaFin = fechaFin.format("YYYY-MM-DD");
+        };
+        
         getOne(ctrl.clienteId);
 
         ctrl.pagar = function(){

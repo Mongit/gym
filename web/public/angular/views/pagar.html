@@ -13,7 +13,7 @@
                 <label for="tipoPago">Tipo de pago: </label>
                 <div class="radio">
                     <label>
-                        <input type="radio"  name="tipoPagoRadio" id="semanal" value="semanal" ng-model="ctrl.tipoPago" ng-required="!ctrl.tipoPago"> Semanal
+                        <input type="radio"  name="tipoPagoRadio" id="semanal" value="semanal" ng-model="ctrl.tipoPago" ng-required="!ctrl.tipoPago" ng-change="{{ctrl.getFechaFinBasadoEntipoPagoYfechaInicio()}}"> Semanal
                     </label>
                 </div>
                 <div class="radio">
