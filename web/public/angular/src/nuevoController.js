@@ -14,8 +14,8 @@
 
         ctrl.getFechaFinBasadoEntipoPagoYfechaInicio = function(){
           var today = moment();
-          var fechaFin = fm.getFechaFin(today, ctrl.tipoPago);
-          ctrl.fechaInicio = today.format("YYYY-MM-DD");
+          var fechaFin = fm.getFechaFin(ctrl.fechaInicioCambiada || today, ctrl.tipoPago);
+          ctrl.fechaInicio = ctrl.fechaInicioCambiada || today.format("YYYY-MM-DD");
           ctrl.fechaFin = fechaFin.format("YYYY-MM-DD");
         };
 
@@ -38,6 +38,7 @@
             });
             $( "#fechaInicio" ).change(function(){
                 ctrl.fechaInicioCambiada = $(this).val();
+                ctrl.getFechaFinBasadoEntipoPagoYfechaInicio();
             });
             $( "#fechaFin" ).datepicker({
               showWeek: true,

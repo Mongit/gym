@@ -26,12 +26,12 @@
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="tipoPagoRadio" id="quincenal" value="quincenal" ng-model="ctrl.tipoPago" ng-required="!ctrl.tipoPago"> Quincenal
+                        <input type="radio" name="tipoPagoRadio" id="quincenal" value="quincenal" ng-model="ctrl.tipoPago" ng-required="!ctrl.tipoPago" ng-change="{{ctrl.getFechaFinBasadoEntipoPagoYfechaInicio()}}"> Quincenal
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="tipoPagoRadio" id="mensual" value="mensual" ng-model="ctrl.tipoPago" ng-required="!ctrl.tipoPago"> Mensual
+                        <input type="radio" name="tipoPagoRadio" id="mensual" value="mensual" ng-model="ctrl.tipoPago" ng-required="!ctrl.tipoPago" ng-change="{{ctrl.getFechaFinBasadoEntipoPagoYfechaInicio()}}"> Mensual
                     </label>
                 </div>
                 <div class="errorMessages" ng-messages="frmNuevo.tipoPagoRadio.$error" ng-if="!frmNuevo.tipoPagoRadio.$pristine || frmNuevo.$submitted" role="alert" >
@@ -50,6 +50,7 @@
                           ng-model="ctrl.fechaInicio"
                           placeholder="Seleccione fecha de inicio"
                           required
+                          ng-change="{{ctrl.getFechaFinBasadoEntipoPagoYfechaInicio()}}"
                         />
                         <div class="errorMessages" ng-messages="frmNuevo.fechaInicio.$error" ng-if="!frmNuevo.fechaInicio.$pristine || frmNuevo.$submitted" role="alert" >
                             <div ng-messages-include="./../../../error/errorMessages.html"></div>
